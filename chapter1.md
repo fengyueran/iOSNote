@@ -14,7 +14,9 @@
 - 不难想象，一个视图要呈现出来，必须有位置和大小等属性，所以View提供了各个控件所需的最基本属性和方法。
 
 ###UIView基本用法
-- 设置frame属性(视图呈现的最基本元素),由位置和大小构成，OC抽象为CGRect这个结构。
+- frame属性
+
+frame属性为视图呈现的最基本元素,由位置和大小构成，OC抽象为CGRect这个结构。
 
 ```objc
 struct CGRect {
@@ -46,7 +48,7 @@ UIView通过CGRectMake方法返回一个CGRect,即一个View的坐标原点和�
 
 一个view的frame是相对其父类而言的，即view的坐标原点是相对父类view偏离的位置。
 
-- UIView bounds属性
+- bounds属性
 
 bounds属性和frame属性类似,其主要区别是坐标系的不同，frame以其父类左上角为原点O(0, 0)，如上图ViewA以父类O(0,0)为原点的o'（x,y)。bounds属性以自己为原点，位置坐标为（0，0）。
 
@@ -56,6 +58,17 @@ frame = a view's location and size using the parent view's coordinate system
 bounds = a view's location and size using its own coordinate system
   Important for: placing the view's content or subviews within itself
 ```
+- backgroundColor属性
+设置背景颜色方法：
+点语法或set方法,如果希望uivew透明，可以设置其背景色为clearColor，即白色透明度为0的背景色。
+```objc
+view.backgroundColor = [UIColor redColor];
+or [view setBackgroundColor:[UIColor redColor]];
+or view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.5 alpha:1];
+```
+
+
+
 
 
 
