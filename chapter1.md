@@ -7,7 +7,10 @@
 
 - UIView可称之为控件或视图，是所有控件的父控件。
 - 一个app所呈现出来的，看得到的，如图片、文字等都是来自于UIView,如下图所示。
-![](/assets/pic1.png)
+<div align="center">
+<img src = "assets/pic1.png" width="400" height="400"</>
+</div>
+
 - 不难想象，一个视图要呈现出来，必须有位置和大小等属性，所以View提供了各个控件所需的最基本属性和方法。
 
 ###UIView基本用法
