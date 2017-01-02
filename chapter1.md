@@ -35,12 +35,11 @@ view.frame = CGRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height);
 ```
 差点跑偏，说好的View呢!
 
-UIView通过CGRectMake方法返回一个CGRect,即一个View的坐标原点和大小。在UIKit中，坐标系的原点(0，0)在左上角，x值向右正向延伸，y值向下正向延伸，如下图所示。
-          <div style="text-align: center">
-<img src="![](/assets/pic2.png)
+UIView通过CGRectMake方法返回一个CGRect,即一个View的坐标原点和大小。在UIKit中，坐标系的原点(0，0)在左上角，x值向右正向延伸，y值向下正向延伸，如下图所示。 
+ <div align="center">
+      <img  src = "assets/pic2.png"</>
+ </div>
 
-"/>
-</div> 
 
 一个view的frame是相对其父类而言的，即view的坐标原点是相对父类view偏离的位置。
 
