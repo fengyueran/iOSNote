@@ -93,6 +93,8 @@ uivew设置tintColor，button类型需为UIButtonTypeSystem。
 <img src = "assets/pic3.png"</>
 </div>
 
+tint还有一些值得研究的地方，这里不做细讲，另写一篇笔记以其为主题。
+
 ###UIView常见用法
 
 
