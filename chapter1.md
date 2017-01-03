@@ -1,9 +1,8 @@
-# First Chapter
-
+#UIView
 
 作为iOS的初学者，在使用一些基本控件的时候总是遇到一些坑，每次google再google,基本能解决问题，但不免浪费了时间。于是想把控件的常规用法以及需要特别注意的地方记录下来，如有不对之处，还请指正。
 
-##UIView
+##UIView简介
 
 - UIView可称之为控件或视图，是所有控件的父控件。
 - 一个app所呈现出来的，看得到的，如图片、文字等都是来自于UIView,如下图所示。
@@ -78,7 +77,7 @@ view.alpha = 0.5;
 
 - tintColor属性
 
-tintColor在ios7新加入，有点魔法色的意思，可以重新渲染图片的色彩，默认为nil。如果一个view没有显示的指定tintColor，那它会继承父类的tintColor,通过设置keywindow的tintColor就可以设置整个app的主题色。
+tintColor是ios7加入的新属性，有点魔法色的意思，可以重新渲染图片的色彩。如果一个view没有显示的指定tintColor，那它会继承父类的tintColor,如果view层级没有父类则默认为blue color,通过设置keywindow的tintColor就可以设置整个app的主题色。
 
  
 ```objc
