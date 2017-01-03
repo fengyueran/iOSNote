@@ -66,6 +66,15 @@ view.backgroundColor = [UIColor redColor];
 or [view setBackgroundColor:[UIColor redColor]];
 or view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.5 alpha:1];
 ```
+- alpha属性
+
+设置透明度方法：
+透明度范围为0-1，0为全透明，1为不透明。
+
+```objc
+view.alpha = 0.5;
+
+```
 
 
 
