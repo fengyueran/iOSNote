@@ -13,7 +13,7 @@
 
 - 不难想象，一个视图要呈现出来，必须有位置和大小等属性，所以View提供了各个控件所需的最基本属性和方法。
 
-###UIView基本用法
+###UIView属性
 - frame属性
 
 frame属性为视图呈现的最基本元素,由位置和大小构成，OC抽象为CGRect这个结构。
@@ -75,6 +75,18 @@ or view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.5 alpha:1];
 view.alpha = 0.5;
 
 ```
+
+- tintColor属性
+
+tintColor在ios7新加入，有点魔法色的意思，可以重新渲染图片的色彩，默认为nil。如果一个view没有显示的指定tintColor，那它会继承父类的tintColor,通过设置keywindow的tintColor就可以设置整个app的主题色。
+
+ 
+```objc
+
+[[UIApplication sharedApplication] keyWindow].tintColor = [UIColor redColor]; 
+``` 
+###UIView常见用法
+
 
 
 
