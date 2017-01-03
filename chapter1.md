@@ -84,6 +84,15 @@ tintColor是ios7加入的新属性，有点魔法色的意思，可以重新渲�
 
 [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor redColor]; 
 ``` 
+uivew设置tintColor，button类型需为UIButtonTypeSystem。
+```objc
+[self.view setTintColor:[UIColor redColor]];
+``` 
+效果如下图，可以看到图片线条颜色渲染成了tintColor的红色：
+<div align="center">
+<img src = "assets/pic3.png"</>
+</div>
+
 ###UIView常见用法
 
 
