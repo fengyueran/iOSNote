@@ -150,6 +150,7 @@ UIKit框架提供了UIGestureRecognizer手势识别这个类来对触摸进行�
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(click)];
     [self.view addGestureRecognizer:tap];
 ```
+UIResponder和Gesture在这里都不做深入探讨，在其相应主题再行研究。
 
 
 
