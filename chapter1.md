@@ -107,13 +107,35 @@ UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击�
 }
 
 ```
-2）在屏幕上移动
+2）在屏幕上移动，检测touch点是否在targetView上
+
 ```objc
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-NSLog(@"touch begin");
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self.view];
+    if (CGRectContainsPoint(self.targetView, location)) {
+        NSLog(@"touch location in the targetView");
+    }
 }
 
 ```
+3）手指离开屏幕，触摸结束
+```objc
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touch end");
+}
+
+```
+
+4）系统事件干扰（电话干扰等）
+
+```objc
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touch cancle");
+}
+
+```
+
 
 
 
