@@ -30,7 +30,8 @@ UIView *view = [UIView alloc]init];
 view.frame = CGRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height);
 
 ```
-我们看到这里用了alloc，再init的方法，即分配内存进而初始化对象，那什么不直接用new呢？从new方法的原型可以看到alloc的方法和new方法几乎没有区别。在原始的OC方法中创建对象一般也是用new方法,在引入Cocoa等框架后，设计者逐渐明白了不能在一个树上吊死的理念，才逐步将分配内存和初始化对象分开来，使得初始化有了更多的选择，如常用的initWith方法。
+我们看到这里用了alloc，再init的方法，即分配内存进而初始化对象，那什么不直接用new呢？从new方法的原型可以看到alloc的方法和new方法几乎没有区别。在原始的OC方法中创建对象一般也是用new方法，
+在引入Cocoa等框架后，设计者逐渐明白了不能在一个树上吊死的理念，才逐步将分配内存和初始化对象分开来，使得初始化有了更多的选择，如常用的initWith方法。
 ```objc
 + (id) new
 {
@@ -49,8 +50,7 @@ UIView通过CGRectMake方法返回一个CGRect,即一个View的坐标原点和�
 
 - bounds属性
 
-bounds属性和frame属性类似,其主要区别是坐标系的不同，frame以其父类左上角为原点O(0, 0)，如上图ViewA以父类O(0,0)为原点的o'（x,y)。bounds属性以自己为原点，位置坐标为（0，0）。
-
+bounds属性和frame属性类似,其主要区别是坐标系的不同，frame以其父类左上角为原点O(0, 0)，如上图ViewA以父类O(0,0)为原点，位置为o'(x,y)。bounds属性以自己为原点，位置坐标为(0,0）。
 ```objc
 frame = a view's location and size using the parent view's coordinate system
   Important for: placing the view in the parent
@@ -58,8 +58,10 @@ bounds = a view's location and size using its own coordinate system
   Important for: placing the view's content or subviews within itself
 ```
 - backgroundColor属性
+
 设置背景颜色方法：
-点语法或set方法,如果希望uivew透明，可以设置其背景色为clearColor，即白色透明度为0的背景色。
+点语法或set方法,虽然点语法的实质就是set方法，但某些情况点语法是失效的，需要特别注意。如果希望uivew透明，可以设置其背景色为clearColor，即白色透明度为0的背景色。
+
 ```objc
 view.backgroundColor = [UIColor redColor];
 or [view setBackgroundColor:[UIColor redColor]];
@@ -107,12 +109,13 @@ tint还有一些值得研究的地方，这里不做细讲，另写一篇笔记�
 - (void)bringSubviewToFront:(UIView *)view;
 ``` 
 
-###UIView常见用法
+###UIView单击事件
 
 UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击事件的方法，UIView添加单击方法可以通过重写UIResponder相关方法和添加手势的方法实现。
 
 1.UIResponder
-UIResponder类是专门用来响应用户操作处理各种事件的。
+
+UIResponder是专门用来响应用户操作处理各种事件的类。
 
 - 触摸屏幕
  
