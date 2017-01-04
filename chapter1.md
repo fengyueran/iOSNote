@@ -94,14 +94,25 @@ uivew设置tintColor，button类型需为UIButtonTypeSystem。
 
 tint还有一些值得研究的地方，这里不做细讲，另写一篇笔记以其为主题。
 
+###UIView移动层级方法
+相关方法很多，列出常用的几个。
+```objc
+//添加子view
+- (void)addSubview:(UIView *)view;
+//插入view在某个view下
+- (void)insertSubview:(UIView *)view belowSubview:(UIView *)siblingSubview;
+//插入view在某个view上
+- (void)insertSubview:(UIView *)view aboveSubview:(UIView *)siblingSubview;
+//移动view到最上层
+- (void)bringSubviewToFront:(UIView *)view;
+``` 
+
 ###UIView常见用法
 
 UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击事件的方法，UIView添加单击方法可以通过重写UIResponder相关方法和添加手势的方法实现。
 
 1.UIResponder
 UIResponder类是专门用来响应用户操作处理各种事件的。
-
-
 
 - 触摸屏幕
  
