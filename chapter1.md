@@ -81,7 +81,6 @@ tintColor是ios7加入的新属性，有点魔法色的意思，可以重新渲�
 
  
 ```objc
-
 [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor redColor]; 
 ``` 
 uivew设置tintColor，button类型需为UIButtonTypeSystem。
@@ -96,6 +95,25 @@ uivew设置tintColor，button类型需为UIButtonTypeSystem。
 tint还有一些值得研究的地方，这里不做细讲，另写一篇笔记以其为主题。
 
 ###UIView常见用法
+* UIView添加单击事件
+
+UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击事件的方法，UIView添加单击方法可以通过重写UIResponder相关方法实现，UIResponder类是专门用来响应用户操作处理各种事件的。
+
+ 1）触摸屏幕
+ 
+```objc
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touch begin");
+}
+
+```
+2）在屏幕上移动
+```objc
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+NSLog(@"touch begin");
+}
+
+```
 
 
 
