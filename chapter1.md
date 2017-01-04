@@ -95,11 +95,15 @@ uivew设置tintColor，button类型需为UIButtonTypeSystem。
 tint还有一些值得研究的地方，这里不做细讲，另写一篇笔记以其为主题。
 
 ###UIView常见用法
-* UIView添加单击事件
 
-UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击事件的方法，UIView添加单击方法可以通过重写UIResponder相关方法实现，UIResponder类是专门用来响应用户操作处理各种事件的。
+UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击事件的方法，UIView添加单击方法可以通过重写UIResponder相关方法和添加手势的方法实现。
 
- 1）触摸屏幕
+1.UIResponder
+UIResponder类是专门用来响应用户操作处理各种事件的。
+
+
+
+- 触摸屏幕
  
 ```objc
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -107,10 +111,11 @@ UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击�
 }
 
 ```
-2）在屏幕上移动，检测touch点是否在targetView上
+- 在屏幕上移动
 
 ```objc
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    //检测touch点是否在targetView上
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self.view];
     if (CGRectContainsPoint(self.targetView, location)) {
@@ -119,7 +124,8 @@ UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击�
 }
 
 ```
-3）手指离开屏幕，触摸结束
+- 手指离开屏幕，触摸结束
+
 ```objc
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"touch end");
@@ -127,7 +133,7 @@ UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击�
 
 ```
 
-4）系统事件干扰（电话干扰等）
+- 系统事件干扰（电话干扰等）
 
 ```objc
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -136,7 +142,14 @@ UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击�
 
 ```
 
+2.Gesture
 
+UIKit框架提供了UIGestureRecognizer手势识别这个类来对触摸进行处理。
+```objc
+    //添加单击手势
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(click)];
+    [self.view addGestureRecognizer:tap];
+```
 
 
 
