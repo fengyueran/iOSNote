@@ -30,8 +30,8 @@ UIView *view = [UIView alloc]init];
 view.frame = CGRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height);
 
 ```
-我们看到这里用了alloc，再init的方法，即分配内存进而初始化对象，那什么不直接用new呢？从new方法的原型可以看到alloc的方法和new方法几乎没有区别。在原始的OC方法中创建对象一般也是用new方法，
-在引入Cocoa等框架后，设计者逐渐明白了不能在一个树上吊死的理念，才逐步将分配内存和初始化对象分开来，使得初始化有了更多的选择，如常用的initWith方法。
+我们看到这里用了alloc，再init的方法，即分配内存进而初始化对象，那为什么不直接用new呢？从new方法的原型可以看到alloc方法和new方法几乎没有区别。在原始的OC方法中创建对象一般也是用new方法，
+在引入Cocoa等框架后，设计者逐渐明白了不能在一棵树上吊死的理念，才逐步将分配内存和初始化对象分开来，使得初始化有了更多的选择，如常用的initWith方法。
 ```objc
 + (id) new
 {
@@ -85,7 +85,7 @@ tintColor是ios7加入的新属性，有点魔法色的意思，可以重新渲�
 ```objc
 [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor redColor]; 
 ``` 
-uivew设置tintColor，button类型需为UIButtonTypeSystem。
+uivew设置tintColor，button类型需为UIButtonTypeSystem，否则无效。
 ```objc
 [self.view setTintColor:[UIColor redColor]];
 ``` 
@@ -111,7 +111,7 @@ tint还有一些值得研究的地方，这里不做细讲，另写一篇笔记�
 
 ###UIView单击事件
 
-UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击事件的方法，UIView添加单击方法可以通过重写UIResponder相关方法和添加手势的方法实现。
+UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击事件的方法，UIView添加单击方法可以通过重写UIResponder相关方法和添加手势来实现。
 
 1.UIResponder
 
@@ -166,17 +166,10 @@ UIKit框架提供了UIGestureRecognizer手势识别这个类来对触摸进行�
 ```
 UIResponder和Gesture在这里都不做深入探讨，在其相应主题再行研究。
 
+第一篇[iOS笔记][1]，大家一起学习。
 
 
-
-
-
-
-
-
-
-
-
+[1](https://github.com/fengyueran/iOSNote)
 
 
 
