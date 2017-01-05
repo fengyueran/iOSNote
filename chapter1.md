@@ -113,7 +113,7 @@ tint还有一些值得研究的地方，这里不做细讲，另写一篇笔记�
 
 UIView不同于UIButton，UIButton继承于UIControl有addTarget的添加单击事件的方法，UIView添加单击方法可以通过重写UIResponder相关方法和添加手势来实现。
 
-1.UIResponder
+**1.UIResponder**
 
 UIResponder是专门用来响应用户操作处理各种事件的类。
 
@@ -156,7 +156,7 @@ UIResponder是专门用来响应用户操作处理各种事件的类。
 
 ```
 
-2.Gesture
+**2.Gesture**
 
 UIKit框架提供了UIGestureRecognizer手势识别这个类来对触摸进行处理。
 ```objc
@@ -167,7 +167,7 @@ UIKit框架提供了UIGestureRecognizer手势识别这个类来对触摸进行�
 UIResponder和Gesture在这里都不做深入探讨，在其相应主题再行研究。
 
 第一篇[iOS笔记][1]，大家一起学习。
-[笔记][1]
+
 [1]:https://github.com/fengyueran/iOSNote/blob/master/chapter1.md
 
 
