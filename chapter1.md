@@ -167,7 +167,7 @@ UIKit框架提供了UIGestureRecognizer手势识别这个类来对触摸进行�
 UIResponder和Gesture在这里都不做深入探讨，在其相应主题再行研究。
 
 第一篇[iOS笔记][1]，大家一起学习。
-笔记[1]
+[笔记](https://github.com/fengyueran/iOSNote/blob/master/chapter1.md)
 [1]:(https://github.com/fengyueran/iOSNote/blob/master/chapter1.md)
 
 
