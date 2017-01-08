@@ -7,7 +7,7 @@
 - UIView可称之为控件或视图，是所有控件的父控件。
 - 一个app所呈现出来的，看得到的，如图片、文字等都是来自于UIView,如下图所示。
 <div align="center">
-<img src = "assets/pic1.png" width="400" height="360"</>
+<img src = "assets/pic1-1.png" width="400" height="360"</>
 </div>
 
 - 不难想象，一个视图要呈现出来，必须有位置和大小等属性，所以View提供了各个控件所需的最基本属性和方法。
@@ -41,7 +41,7 @@ view.frame = CGRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height);
 
 UIView通过CGRectMake方法返回一个CGRect,即一个View的坐标原点和大小。在UIKit中，坐标系的原点(0，0)在左上角，x值向右正向延伸，y值向下正向延伸，如下图所示。 
  <div align="center">
-      <img  src = "assets/pic2.png"</>
+      <img  src = "assets/pic1-2.png"</>
  </div>
 
 
@@ -90,7 +90,7 @@ uivew设置tintColor，button类型需为UIButtonTypeSystem，否则无效。
 ``` 
 效果如下图，可以看到图片线条颜色渲染成了tintColor的红色：
 <div align="center">
-<img src = "assets/pic3.png"</>
+<img src = "assets/pic1-3.png"</>
 </div>
 
 tint还有一些值得研究的地方，这里不做细讲，另写一篇笔记以其为主题。
