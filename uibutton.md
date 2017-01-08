@@ -1,1 +1,3 @@
 #UIButton
+UIButton作为最常用的控件之一，其继承了父类UIView的属性和方法，同时由于其继承了UIControl使其与UIView区别开来，可以接收touch事件。
+
