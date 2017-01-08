@@ -16,7 +16,6 @@
 - frame属性
 
 frame属性为视图呈现的最基本元素,由位置和大小构成，OC抽象为CGRect这个结构。
-
 ```objc
 struct CGRect {
     CGPoint origin;
@@ -168,7 +167,7 @@ UIResponder和Gesture在这里都不做深入探讨，在其相应主题再行�
 
 第一篇[iOS笔记][1]，大家一起学习。
 
-PS:I am xinghun who is on the road.
+PS: I am xinghun who is on the road.
 
 [1]:https://github.com/fengyueran/iOSNote/blob/master/chapter1.md
 
