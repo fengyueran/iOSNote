@@ -24,3 +24,4 @@ UIButton作为最常用的控件之一，其继承了父类UIView的属性和方
  text = 'button'; hidden = YES; opaque = NO; userInteractionEnabled = NO; 
  layer = <_UILabelLayer: 0x7fccf97258e0>>
 ```
+可以看到直接用点语法设置title时button上的label frame为0，且hidden属性为YES，title自然不能显示。
