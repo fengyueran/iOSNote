@@ -13,3 +13,9 @@ UIButton作为最常用的控件之一，其继承了父类UIView的属性和方
     
 ```
 效果如下图，可以看到button的title并没有显示出来,why?
+于是默默的打印了button...
+```objc
+<UIButtonLabel: 0x7fccf9725290; frame = (0 0; 0 0);
+ text = 'button'; hidden = YES; opaque = NO; userInteractionEnabled = NO; 
+ layer = <_UILabelLayer: 0x7fccf97258e0>>
+```
