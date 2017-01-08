@@ -31,9 +31,9 @@ UIButton作为最常用的控件之一，其继承了父类UIView的属性和方
     button.backgroundColor = [UIColor redColor];
     [self.view addSubview:button];
 ```
-效果如下图，可以看到button的title并没有显示出来,why?
+效果如下图，可以看到button的title显示出来了。
 <div align="center">
-<img src = "assets/pic2-1.png" width="400" height="360"</>
+<img src = "assets/pic2-2.png" width="400" height="360"</>
 </div>
 
 
