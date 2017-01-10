@@ -36,5 +36,14 @@ UIButton作为最常用的控件之一，其继承了父类UIView的属性和方
 <img src = "assets/pic2-2.png" width="400" height="360"</>
 </div>
 
+此时button上的label为：
+```objc
+<UIButtonLabel: 0x7fc90243b660; frame = (50 50; 0 0); 
+text = 'button'; opaque = NO; 
+userInteractionEnabled = NO;
+layer = <_UILabelLayer: 0x7fc90243bcb0>>
+
+```
+
 
 
