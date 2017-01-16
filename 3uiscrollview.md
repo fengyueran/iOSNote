@@ -10,4 +10,5 @@ UIScrollView作为非常常用的控件之一，其主要特性就是可以滚�
     [self.view addSubview:scrollView];
 ```
 此时scrollView还不能滚动，需要我指定它的滚动内容大小，那什么是滚动内容的大小呢？
+![](/assets/pic3-1.png)
 
