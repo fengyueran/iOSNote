@@ -21,5 +21,6 @@ contentSize表示通过滑动UIScrollView能看到的视图范围，如下图暗
 ![abjbjkjk](/assets/pic3-1.png)
 当contentSize的宽高大于UIScrollView的的宽高时，UIScrollView就能够滚动了。
 ```objc
+    //contentSize.width=800,contentSize.height=1000
     scrollView.contentSize = CGSizeMake(800, 1000);
 ```
