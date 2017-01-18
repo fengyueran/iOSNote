@@ -68,7 +68,7 @@ bounds = a view's location and size using its own coordinate system
     [self.view addSubview:redView];
     [redView addSubview:blueSubView];
 ```
-从下图可以看到
+从下图可以看到，当父类redView的bounds.origin修改为(50，50)后
 <div align="center">
 <img src = "assets/pic1-4.png"</>
 </div>
