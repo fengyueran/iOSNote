@@ -56,7 +56,23 @@ frame = a view's location and size using the parent view's coordinate system
 bounds = a view's location and size using its own coordinate system
   Important for: placing the view's content or subviews within itself
 ```
-当然bounds属性是可以修改的
+当然bounds属性是可以修改的，当bounds属性origin被修改后产生怎样一种效果呢？
+```objc
+    UIView *redView= [[UIView alloc]initWithFrame:CGRectMake(100, 200, 200, 200)];
+    redView.bounds = CGRectMake(50, 50, 200, 200);
+    redView.backgroundColor = [UIColor redColor];
+   
+    UIView *blueSubView= [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+    blueSubView.backgroundColor = [UIColor blueColor];
+    subView.alpha = 0.5;
+    [self.view addSubview:redView];
+    [redView addSubview:blueSubView];
+```
+从下图可以看到
+<div align="center">
+<img src = "assets/pic1-4.png"</>
+</div>
+
 - backgroundColor属性
 
 设置背景颜色方法：
