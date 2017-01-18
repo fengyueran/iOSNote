@@ -68,7 +68,7 @@ bounds = a view's location and size using its own coordinate system
     [self.view addSubview:redView];
     [redView addSubview:blueSubView];
 ```
-从下图可以看到，当父类redView的bounds.origin修改为(50，50)后
+从下图可以看到，当父类redView的bounds.origin修改后,子类frame origin为(0，0)的blueView左上角并没有与父类redView左上角重合，为什么会出现这种现象呢？因为一个视图的渲染是以父类bounds的坐标系为基础的。当redView的bounds.origin设置(50,50)后bounds坐标系的坐标原点(0,0)由原来的O点变为O'点。在新的坐标系下blueView出现的位置就可以理解。
 <div align="center">
 <img src = "assets/pic1-4.png"</>
 </div>
