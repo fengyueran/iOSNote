@@ -17,7 +17,7 @@ scrollView可以说是一个能滚动的UIView，因此其创建方式同普通�
 
 1）contentSize属性 
                                                        
-contentSize表示通过滑动UIScrollView能看到的视图范围，如下图暗色区域(包括可视的UIScrollView部分)所示，假想它是一个真实存在的view,默认情况下其左上角与UIScrollView左上角重合。contentSize.width、contentSize.height为其宽高。
+contentSize表示通过滑动UIScrollView能看到的视图区域，如下图暗色区域(包括可视的UIScrollView部分)所示，假想它是一个真实存在的view,默认情况下其左上角与UIScrollView左上角重合。contentSize.width、contentSize.height为其宽高。
 ![](/assets/pic3-1.png)
 当contentSize的宽高大于UIScrollView的的宽高时，UIScrollView就能够滚动了。
 ```objc
@@ -25,4 +25,4 @@ contentSize表示通过滑动UIScrollView能看到的视图范围，如下图暗
     scrollView.contentSize = CGSizeMake(800, 1000);
 ```
 2）contentOffset属性
-contentoffset属性为CGPoint类型，也就是一个点，如上图暗色区域的左上角，
+contentoffset属性为CGPoint类型，也就是一个点，它是偏离ScrollView.bounds.origin的位置，如上图暗色区域的左上角O，默认情况O点为CGPointZero，即O点和O'点重合，此时UIScrollView不能向上或左滚动，那儿没啥，你就别滚了!

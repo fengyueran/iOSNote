@@ -49,13 +49,14 @@ UIView通过CGRectMake方法返回一个CGRect,即一个View的坐标原点和�
 
 - bounds属性
 
-bounds属性和frame属性类似,其主要区别是坐标系的不同，frame以其父类左上角为原点O(0, 0)，如上图ViewA以父类O(0,0)为原点，位置为o'(x,y)。bounds属性以自己为原点，位置坐标为(0,0）。
+bounds属性和frame属性类似,其主要区别是坐标系的不同，frame以其父类bounds.origin为原点O，如上图ViewA以父类O(0,0)为原点，位置为o'(x,y)。bounds属性以自己为原点，位置坐标为(0,0）。
 ```objc
 frame = a view's location and size using the parent view's coordinate system
   Important for: placing the view in the parent
 bounds = a view's location and size using its own coordinate system
   Important for: placing the view's content or subviews within itself
 ```
+当然bounds属性是可以修改的
 - backgroundColor属性
 
 设置背景颜色方法：
