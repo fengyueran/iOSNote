@@ -18,7 +18,7 @@ scrollView可以说是一个能滚动的UIView，因此其创建方式同普通�
 1）contentSize属性 
                                                        
 contentSize表示通过滑动UIScrollView能看到的视图范围，如下图暗色区域(包括可视的UIScrollView部分)所示，假想它是一个真实存在的view,默认情况下其左上角与UIScrollView左上角重合。contentSize.width、contentSize.height为其宽高。
-![abjbjkjk](/assets/pic3-1.png)
+![](/assets/pic3-1.png)
 当contentSize的宽高大于UIScrollView的的宽高时，UIScrollView就能够滚动了。
 ```objc
     //contentSize.width=800,contentSize.height=1000
