@@ -26,3 +26,30 @@ contentSize表示通过滑动UIScrollView能看到的视图区域，如下图暗
 ```
 2）contentOffset属性
 contentoffset属性为CGPoint类型，也就是一个点，它是偏离ScrollView.bounds.origin的位置，如上图暗色区域的左上角O，默认情况O点为CGPointZero，即O点和O'点重合，此时UIScrollView不能向上或左滚动，那儿没啥，你就别滚了!
+```objc
+//向左向上滚动100point
+self.scrollView.contentOffset = CGPointMake(100, 100);
+```
+**3.UIScrollView工作原理**
+
+要了解UIScrollView为什么能够滚动，就需要了解一个视图的位置是由什么决定的
+，在UIView的笔记中已经介绍了，在这里就不重复了。
+- 有这样的结论：
+ - 一个视图的位置是由父类的bounds坐标系决定的，因此只要修改bounds.origin就可以改变视图呈现的位置。
+ - 视图在父类的位置由下面的公式决定
+ ```objc
+ CompositedPosition.x = View.frame.origin.x - Superview.bounds.origin.x;
+
+CompositedPosition.y = View.frame.origin.y - Superview.bounds.origin.y;
+ ```
+ - 当bounds.origin.x,bounds.origin.y为正时视图向左上移动，反之亦然，这就达到了滚动的目的。
+
+事实上contentOffset的set方法类似这样：
+```objc
+- (void)setContentOffset:(CGPoint)offset
+{
+    CGRect bounds = [self bounds];
+    bounds.origin = offset;
+    [self setBounds:bounds];
+}
+```
