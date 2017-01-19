@@ -30,6 +30,16 @@ contentoffset属性为CGPoint类型，也就是一个点，它是偏离ScrollVie
 //向左向上滚动100point
 self.scrollView.contentOffset = CGPointMake(100, 100);
 ```
+
+3）contentInset属性
+contentSize规定了可滚动视图的区域，contentInset则赠送了额外的滚动区域，如上图中浅蓝色的区域。
+```objc
+//上左下右分别增加了80，40，30，10的滚动区域
+ self.scrollView.contentInset = UIEdgeInsetsMake(80, 40, 30, 10);
+```
+
+
+
 **3.UIScrollView工作原理**
 
 要了解UIScrollView为什么能够滚动，就需要了解一个视图的位置是由什么决定的
