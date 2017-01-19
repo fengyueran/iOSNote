@@ -56,4 +56,4 @@ CompositedPosition.y = View.frame.origin.y - Superview.bounds.origin.y;
     [self setBounds:bounds];
 }
 ```
-也就是说，设置contentOffset实际上就是改变scrollView的bounds.origin,即内容视图的父类(scrollView)的bounds。
+也就是说，设置contentOffset实际上就是改变scrollView的bounds.origin，即内容视图父类(scrollView)的bounds。
