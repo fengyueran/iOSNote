@@ -34,15 +34,18 @@ self.scrollView.contentOffset = CGPointMake(100, 100);
 
 要了解UIScrollView为什么能够滚动，就需要了解一个视图的位置是由什么决定的
 ，在UIView的笔记中已经介绍了，在这里就不重复了。
-- 有这样的结论：
- - 一个视图的位置是由父类的bounds坐标系决定的，因此只要修改bounds.origin就可以改变视图呈现的位置。
- - 视图在父类的位置由下面的公式决定
- ```objc
- CompositedPosition.x = View.frame.origin.x - Superview.bounds.origin.x;
 
+**有这样的结论：**
+ - 一个视图的位置是由父类的bounds坐标系决定的，因此只要修改bounds.origin就可以改变视图呈现的位置。
+ - 视图在父类的位置由下面的公式决定:
+ 
+```objc
+CompositedPosition.x = View.frame.origin.x - Superview.bounds.origin.x;
 CompositedPosition.y = View.frame.origin.y - Superview.bounds.origin.y;
+
  ```
- - 当bounds.origin.x,bounds.origin.y为正时视图向左上移动，反之亦然，这就达到了滚动的目的。
+ 
+- 当bounds.origin.x,bounds.origin.y为正时视图向左上移动，反之亦然，这就达到了滚动的目的。
 
 事实上contentOffset的set方法类似这样：
 ```objc
@@ -53,3 +56,4 @@ CompositedPosition.y = View.frame.origin.y - Superview.bounds.origin.y;
     [self setBounds:bounds];
 }
 ```
+也就是说，设置contentOffset实际上就是改变scrollView的bounds.origin,即内容视图的父类(scrollView)的bounds。
