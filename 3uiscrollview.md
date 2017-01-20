@@ -87,9 +87,12 @@ CompositedPosition.y = View.frame.origin.y - Superview.bounds.origin.y;
      NSLog(@"drag end");
 }
 ```
-
 ```objc
-//结束拖曳时调用
+/*结束拖曳时调用，官方文档:
+The scroll view calls this method at the end of its implementations of the
+setContentOffset(_:animated:) and scrollRectToVisible(_:animated:) methods, 
+but only if animations are requested.*/
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     NSLog(@" programmatic-generated scroll finishes");
 }
+```
