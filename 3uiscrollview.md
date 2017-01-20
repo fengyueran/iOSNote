@@ -67,3 +67,29 @@ CompositedPosition.y = View.frame.origin.y - Superview.bounds.origin.y;
 }
 ```
 也就是说，设置contentOffset实际上就是改变scrollView的bounds.origin，即内容视图父类(scrollView)的bounds。
+
+**4.UIScrollView代理**
+```objc
+//即将开始拖曳的时候调用
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+   NSLog(@"drag begin");
+}
+```
+```objc
+//滚动时调用
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"scroll");
+}
+```
+```objc
+//结束拖曳时调用
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+     NSLog(@"drag end");
+}
+```
+
+```objc
+//结束拖曳时调用
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    NSLog(@" programmatic-generated scroll finishes");
+}
