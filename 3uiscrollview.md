@@ -86,6 +86,8 @@ CompositedPosition.y = View.frame.origin.y - Superview.bounds.origin.y;
 ```
 - 结束拖曳时调用
 
+并不是最后调用的代理方法，当拖动很快有惯性滑动时会继续调用scrollViewDidScroll方法，只有滚动很慢没有惯性滑动时才是最后调用的方法。
+
 ```objc
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
