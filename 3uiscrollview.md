@@ -52,7 +52,7 @@ CompositedPosition.y = View.frame.origin.y - Superview.bounds.origin.y;
 
  ```
  
-- 当bounds.origin.x,bounds.origin.y为正时视图向左上移动，反之亦然，这就达到了滚动的目的。
+- 当bounds.origin.x，bounds.origin.y为正时视图向左上移动，反之亦然，这就达到了滚动的目的。
 
 事实上contentOffset的set方法类似这样：
 ```objc
@@ -83,10 +83,9 @@ CompositedPosition.y = View.frame.origin.y - Superview.bounds.origin.y;
 ```
 - 结束拖曳时调用
 
-并不是最后调用的代理方法，当拖动很快有惯性滑动时会继续调用scrollViewDidScroll方法，只有滚动很慢没有惯性滑动时才是最后调用的方法。
+并不是scrollView完全停止时调用的代理方法，当拖动很快有惯性滑动时会继续调用scrollViewDidScroll方法，只有滚动很慢没有惯性滑动时才是最后调用的方法。
 
 ```objc
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
      NSLog(@"drag end");
 }
