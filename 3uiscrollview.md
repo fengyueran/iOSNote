@@ -118,3 +118,22 @@ but only if animations are requested.
     NSLog(@"decelerating");
 }
 ```
+
+**5.UIScrollView疑问**
+- 如何才能检测UIScrollView滚动动画结束，即看不到滚动的时间？
+
+我们知道ScrollView只要滚动就会调用scrollViewDidScroll方法，假设某个方法在最后调用scrollViewDidScroll后执行，那这个时候scrollView滚动肯定结束了。如下,scollView滚动时不断添加计时异步操作，而scrollViewDidScroll不断被调用，计时操作不断被取消，直到最后一次调用scrollViewDidScroll方法，此时不再进入scrollViewDidScroll方法，即不会执行[NSObject cancelPreviousPerformRequestsWithTarget:self]方法，而进入scrollViewDidEndScrollingAnimation，此时滚动结束。
+```objc
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"scroll");
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    //ensure that the end of scroll is fired.
+    [self performSelector:@selector(scrollViewDidEndScrollingAnimation:) withObject:nil afterDelay:0.3];
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+   [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    NSLog(@"scroll end");
+}
+
+```
