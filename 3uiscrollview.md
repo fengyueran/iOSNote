@@ -1,6 +1,5 @@
 #UIScrollView
-UIScrollView作为非常常用的控件之一，其主要特性就是可以滚动。手机屏幕只有这么大，想要看到超出屏幕范围的内容，UIScrollView就诞生了，通过左右上下滑动我们就可以看到屏幕大小以外的内容。
-
+UIScrollView作为最常用的控件之一，其主要特性就是可以滚动。手机屏幕只有这么大，想要看到超出屏幕范围的内容，UIScrollView就诞生了，通过左右上下滑动我们就可以看到屏幕大小以外的内容。
 
 ###UIScrollView基本用法
 **1.创建scrollView**
@@ -38,12 +37,10 @@ contentSize规定了可滚动视图的区域，contentInset则赠送了额外的
  self.scrollView.contentInset = UIEdgeInsetsMake(80, 40, 30, 10);
 ```
 
-
-
 **3.UIScrollView工作原理**
 
 要了解UIScrollView为什么能够滚动，就需要了解一个视图的位置是由什么决定的
-，在UIView的笔记中已经介绍了，在这里就不重复了。
+，在[UIView的笔记][1]中已经介绍了，在这里就不重复了。
 
 **有这样的结论：**
  - 一个视图的位置是由父类的bounds坐标系决定的，因此只要修改bounds.origin就可以改变视图呈现的位置。
@@ -137,3 +134,27 @@ but only if animations are requested.
 }
 
 ```
+PS: I am xinghun who is on the road.
+
+[1]:http://www.jianshu.com/p/4f9a8139d0b3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
