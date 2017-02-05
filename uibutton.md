@@ -46,13 +46,14 @@ layer = <_UILabelLayer: 0x7fc90243bcb0>>
 ```
 
 - 设置按钮图片
+
 首先我尝试了这样的方法：
 ```objc
-    button.imageView.image = [UIImage imageNamed:@"minion"];
+button.imageView.image = [UIImage imageNamed:@"minion"];
 ```
 很遗憾，图片并未显示，于是很自然的改用set方法
 ```objc
-     [button setImage:[UIImage imageNamed:@"minion"] forState:UIControlStateNormal];
+[button setImage:[UIImage imageNamed:@"minion"] forState:UIControlStateNormal];
 ```
 效果如下图，button的图片显示出来了，而且图片缩放到了button的大小。
 
@@ -60,7 +61,9 @@ layer = <_UILabelLayer: 0x7fc90243bcb0>>
 <img src = "assets/pic2-3.png" width="400" height="360"</>
 </div>
 
+
 - 设置按钮图片边距
+
 很多时候并不想图片直接占满整个button，而是希望在上下左右留出一定边距。这需要用到imageEdgeInsets属性：
 ```objc
   button.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
