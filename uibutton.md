@@ -65,7 +65,7 @@ layer = <_UILabelLayer: 0x7fc90243bcb0>>
 ```objc
   button.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
 ```
-效果如下图，button的图片上左下右的边距都设置成了10。
+效果如下图，button图片上左下右的边距都设置成了10，当然如果是背景图则无效。
 <div align="center">
 <img src = "assets/pic2-4.png" width="400" height="360"</>
 </div>
