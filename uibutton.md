@@ -45,5 +45,15 @@ layer = <_UILabelLayer: 0x7fc90243bcb0>>
 
 ```
 
+- 设置按钮图片
+首先我尝试了这样的方法：
+```objc
+    button.imageView.image = [UIImage imageNamed:@"minion"];
+```
+很遗憾，图片并未显示，于是很自然的改用set方法
+```objc
+     [button setImage:[UIImage imageNamed:@"minion"] forState:UIControlStateNormal];
+```
+
 
 
