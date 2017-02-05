@@ -133,6 +133,18 @@ but only if animations are requested.
 }
 
 ```
+- 判断滚动方向
+
+首先想到了用滚动速度，于是在scrollViewDidScroll中对速度进行检测，不幸的是当手指离开scollview后滚动速度就变成了0，无法进行速度方向检测。
+
+```objc
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat velocity = [scrollView.panGestureRecognizer velocityInView:scrollView.superview].x;
+    NSLog(@"velocity=%f",velocity);
+}
+```
+
 PS: I am xinghun who is on the road.
 
 [1]:http://www.jianshu.com/p/4f9a8139d0b3
