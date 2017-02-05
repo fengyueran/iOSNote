@@ -54,9 +54,11 @@ layer = <_UILabelLayer: 0x7fc90243bcb0>>
 ```objc
      [button setImage:[UIImage imageNamed:@"minion"] forState:UIControlStateNormal];
 ```
-效果如下图，可以看到button的title显示出来了。
+效果如下图，button的图片显示出来了。
+
 <div align="center">
-<img src = "assets/pic2-3.png" width="400" height="360"</>
+<img src = “assets/pic2-3.png”
+ width="400" height="360"</>
 </div>
 
 
