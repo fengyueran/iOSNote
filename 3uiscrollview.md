@@ -144,6 +144,24 @@ but only if animations are requested.
     NSLog(@"velocity=%f",velocity);
 }
 ```
+根据scollview的特性可以想到contentOffset属性，通过相对的contentOffset即可判断滚动方向，如下(水平方向同理)：
+```objc
+//somewhere in the header
+@property (nonatomic, assign) CGFloat lastContentOffset
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    lastContentOffset = scrollView.contentOffset.y;
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    if (lastContentOffset < scrollView.contentOffset.y) {
+        NSLog(@"向上滚动");
+    }else{
+        NSLog(@"向下滚动");
+    }
+}
+```
+
+
 
 PS: I am xinghun who is on the road.
 
