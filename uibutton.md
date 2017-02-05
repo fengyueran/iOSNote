@@ -65,7 +65,12 @@ layer = <_UILabelLayer: 0x7fc90243bcb0>>
 ```objc
   button.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
 ```
-效果如下图，button的图片显示出来了，而且图片缩放到了button的大小。
+效果如下图，button的图片上左下右的边距都设置成了10。
+<div align="center">
+<img src = "assets/pic2-4.png" width="400" height="360"</>
+</div>
+
+
 
 
 
