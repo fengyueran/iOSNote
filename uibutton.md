@@ -26,10 +26,10 @@ button.backgroundColor = [UIColor redColor];
 ```
 可以看到直接用点语法设置title时button上的label frame为0，且hidden属性为YES，title自然不能显示，需要改用set方法进行设置。
 ```objc
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
-    [button setTitle:@"button" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor redColor];
-    [self.view addSubview:button];
+UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+[button setTitle:@"button" forState:UIControlStateNormal];
+button.backgroundColor = [UIColor redColor];
+[self.view addSubview:button];
 ```
 效果如下图，可以看到button的title显示出来了。
 <div align="center">
@@ -66,7 +66,7 @@ button.imageView.image = [UIImage imageNamed:@"minion"];
 
 很多时候并不想图片直接占满整个button，而是希望在上下左右留出一定边距。这需要用到imageEdgeInsets属性：
 ```objc
-  button.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+ button.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
 ```
 效果如下图，button图片上左下右的边距都设置成了10，当然如果是背景图则无效。
 <div align="center">
