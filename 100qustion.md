@@ -27,7 +27,7 @@
 #####2. 为什么NSString属性(或NSArray，NSDictionary）常用copy修饰?
 常看到NSString属性用copy关键字来修饰，是不是NSString用copy最好呢？
 凡事没有绝对，copy也一样，之所以用copy是为了NSString属性的安全，如下：
-当myStr用strong修饰，其初始化来自于NSMutableString:yourStr，当yourStr改变时myStr也跟着改变了，而用copy修饰的时候，myStr赋值会进行深拷贝，将来源的地址拷贝一份，因此再对来源进行修改时，myStr也不会受影响。
+当myStr用strong修饰，其初始化来自于NSMutableString:yourStr，当yourStr改变时myStr也跟着改变了，而用copy修饰的时候，给myStr赋值时yourStr会拷贝一份不可变的字符串，因此再对来源进行修改时，myStr也不会受影响。
 ```objc
 @property (nonatomic, strong) NSString *myStr;
 - (void)viewDidLoad {
