@@ -50,7 +50,7 @@ self.myStr=1
 ```
 既然copy很安全为什么不都用copy呢？事实上在执行self.myStr = yourStr时有这样的操作self.myStr = [yourStr copy];在copy里边会对来源进行判断
 if ([yourStr isMemberOfClass:[NSMutableString class]])
-如果是不可变string就进行浅拷贝，不产生新的对象，如果是可变string就进行深拷贝，产生新的对象。在这个判断操作在NSString很多时开销是比较大的，因此如果能确定来源是不可变的类型，如@“不可变”，就用strong，否则用copy.
+如果是不可变string就进行浅拷贝，不产生新的对象，如果是可变string就进行深拷贝，产生新的对象。这个判断操作在NSString很多时开销是比较大的，因此如果能确定来源是不可变的类型，如@“不可变”，就用strong，否则用copy。
 
 
 
