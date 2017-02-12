@@ -71,9 +71,9 @@ This method is called after the view controller has loaded its view hierarchy in
  
 - view的载入过程
 
-view载入的一般过程如下图所示：
+ view载入的一般过程如下图所示：
 
-从UIWindow的makeKeyAndVisible开始->调用UIWindow私有方法addRootViewControllerViewIfPossible->UIWindow调用get方法获取root view controlller的view
+ 从UIWindow的makeKeyAndVisible开始->调用UIWindow私有方法addRootViewControllerViewIfPossible->UIWindow调用get方法获取root view controlller的view
 
  ->get方法中调用loadViewIfRequired方法->调用loadView方法->调用私有方法j加载view->调用view controller内部window方法，如preferedInterfaceOrientation、supportedInterfaceOrientations等(多次调用)
  
