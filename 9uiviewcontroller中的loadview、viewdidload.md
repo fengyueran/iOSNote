@@ -47,3 +47,20 @@ This method is called after the view controller has loaded its view hierarchy in
  官方文档：
 <table><tr><td bgcolor=#7FFFD4>// Called after the view controller's view is released and set to nil. For example, a memory warning which causes the view to be purged. Not invoked as a result of -dealloc.</td></tr></table>
 可知当controller的view释放后就会调用viewDidUnload方法，事实上当应用程序占用内存过多，就会向UIViewController发出didReceiveMemoryWarning消息，在didReceiveMemoryWarning中只要controller的view不在view层级，即view的superview为nil的时候，就会将view释放，并且调用viewDidUnload方法。
+
+- 三个方法的关系
+
+ 1) 系统第一次调用[UIViewController View]获取view时view为nil,调用
+     loadView为controller创建view；
+ 
+ 2）view创建完毕加载到内存后会调用viewDidLoad方法，在viewDidLoad方法进行 
+    界面UI的初始化；
+ 
+ 3）当发生内存警告，controller的view可能被释放，view设置为nil,并调用      
+    viewDidUnload方法；
+ 
+ 4）当再次访问controller的view时，view已在3)中被置为nil，因此为调用
+    loadView重新创建view;
+ 
+ 5）重复2）.
+ 
