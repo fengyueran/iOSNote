@@ -9,6 +9,28 @@
 <img src = "assets/pic9-1.png" width="400" height="360"</>
 </div>
 
+ 由此可以知道loadView的调用时机：当访问UIViewController的view时会调用view的get方法，进而调用loadView。
+ 那loadView有什么用呢？查看UIViewController的view属性：
+ <table><tr><td bgcolor=#7FFFD4>@property(null_resettable, nonatomic,strong) UIView *view; // The getter first invokes [self loadView] if the view hasn't been set yet. Subclasses must call super if they override the setter or getter.
+</td></tr></table>
+可知loadView的作用：创建UIViewController的view
+
+ 默认实现[super loadView]做了些什么呢？
+ - 查找UIViewController相关的xib文件创建view
+ 
+   a.有指定xib文件加载指定xib；
+   
+   b.没有指定xib文件则加载同名xib；
+   
+   c.没有找到相关xib则创建空白view。
+   
+   ```objc
+   // applicationFrame的值是：{{x = 0, y = 20}
+   self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame] autorelease];  
+
+   ```
+   
+
 
 - viewDidLoad
 
