@@ -58,13 +58,13 @@ This method is called after the view controller has loaded its view hierarchy in
  1) 系统第一次调用[UIViewController View]获取view时view为nil,调用
      loadView为controller创建view；
  
- 2）view创建完毕加载到内存后会调用viewDidLoad方法，在viewDidLoad方法进行 
+ 2）view创建完毕加载到内存后会调用viewDidLoad方法，在viewDidLoad方法进行      
     界面UI的初始化；
  
  3）当发生内存警告，controller的view可能被释放，view设置为nil,并调用      
     viewDidUnload方法；
  
- 4）当再次访问controller的view时，view已在3)中被置为nil，因此为调用
+ 4）当再次访问controller的view时，view已在3)中被置为nil，因此会调用
     loadView重新创建view;
  
  5）重复2）.
