@@ -39,4 +39,5 @@
  <table><tr><td bgcolor=#7FFFD4>Called after the controller's view is loaded into memory.
 This method is called after the view controller has loaded its view hierarchy into memory. This method is called regardless of whether the view hierarchy was loaded from a nib file or created programmatically in the loadView method. You usually override this method to perform additional initialization on views that were loaded from nib files.</td></tr></table>
 
- 即viewDidLoad方法在view加载到内存中后就会调用，由可知是在loadView方法调用后的某个时间。一般情况下该方法只会调用一次，但是当出现内存警告，view被unload从内存中清除后会重新调用该方法，或者在不断的创建controller,然后push it again and again。
+ 即viewDidLoad方法在view加载到内存中后就会调用，由上可知是在loadView方法调用后的某个时间，此时view正是在内存中还没有在屏幕上渲染，因此该方法一定早于viewWillAppear方法。一般情况下该方法只会调用一次，但是当出现内存警告，view被unload从内存中清除后会重新调用该方法，或者在不断的创建controller,然后push it again and again。
+ 作用：做一些初始化工作(添加子视图等)，因为此时view加入内存中可以拿到self.view。
