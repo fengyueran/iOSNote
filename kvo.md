@@ -4,7 +4,21 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
 **1.**KVO的应用
 - 注册观察者，实施监听:
 
-```objc
-    [student addObserver:teacher forKeyPath:@"name" options:NSKeyValueObservingOptionNew context:nil];
-
+ ```objc          
+ //student:被观察者对象
+ //teacher:观察者对象
+ //@"name":被观察者的属性名
+ //options:属性配置，有四个值：
+ typedef NS_OPTIONS(NSUInteger, NSKeyValueObservingOptions) {
+ //接收方法中传入属性变化后的新值，键为NSKeyValueChangeNewKey
+    NSKeyValueObservingOptionNew = 0x01,
+    //接收方法中传入属性变化前的旧值，键为NSKeyValueChangeOldKey
+    NSKeyValueObservingOptionOld = 0x02,
+    //注册之后会立刻调用接收方法，可以在程序第一次运行时做一些初始化操作，
+    如果配置了NSKeyValueObservingOptionNew，change参数内容会包含新值
+    NSKeyValueObservingOptionInitial NS_ENUM_AVAILABLE(10_5, 2_0) = 0x04,
+    //接收方法会在属性变化前后分别调用一次，变化前的通知change参数包含键值对：notificationIsPrior = 1。
+    NSKeyValueObservingOptionPrior NS_ENUM_AVAILABLE(10_5, 2_0) = 0x08
+ }
+[student addObserver:teacher forKeyPath:@"name" options:NSKeyValueObservingOptionNew context:nil];
 ```
