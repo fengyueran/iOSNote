@@ -96,9 +96,8 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
  
  @end
  ```
-
  <div align="center">
-<img src = "assets/pic8-1.gif"</>
+ <img src = "assets/pic8-1.gif"</>
 </div>
 
 
