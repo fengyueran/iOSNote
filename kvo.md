@@ -101,5 +101,39 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
  @end
  ```
 
+**3.**手动键值观察
+在以上KVO的应用中通过创建观察者，在属性变化时就会自动发出通知，而有些场景需要人为的控制通知的发送，这需要重写被观察者对象属性的getter/setter方法。
+
+```objc
+#import "Person.h"
+
+@implementation Person
+{
+   NSUInteger myAge;
+}
+
+- (NSUInteger)myAge {
+    return myAge;
+}
+- (void)setMyAge:(NSUInteger)newAge {
+    //发送通知：键值即将改变
+    [self willChangeValueForKey:@"myAge"];
+    myAge = newAge;
+    //发送通知：键值已经修改
+    [self didChangeValueForKey:@"myAge"];
+}
+
+//当设置键值之后，通过此方法，决定是否发送通知
++ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key {
+    //当key为myAge时，手动发送通知
+    if ([key isEqualToString:@"myAge"]) {
+        return NO;
+    }
+    //当为其他key时，自动发送通知
+    return YES;
+}
+
+@end
+```
 
 
