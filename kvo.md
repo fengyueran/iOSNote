@@ -115,6 +115,7 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
 - (NSUInteger)myAge {
     return myAge;
 }
+
 - (void)setMyAge:(NSUInteger)newAge {
     //发送通知：键值即将改变
     [self willChangeValueForKey:@"myAge"];
@@ -135,5 +136,35 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
 
 @end
 ```
+
+**4.**设置属性之间的依赖
+
+假设我要监听一个color属性的变化，而一个color又与三原色相关，每种原色又由不同的组分构成，如此我们就需要监听N个原色属性的变化，每个原色属性变化就去设置color的值，我的天，太麻烦了，事情总是有解决的办法：KVO给我们提供了这种键之间的依赖方法
+```objc
++ (NSSet *)keyPathsForValuesAffecting<Key>;
+```
+```objc
+//设置属性依赖，属性greenComponent，依赖于属性lComponent和属性aComponent
++ (NSSet *)keyPathsForValuesAffectingGreenComponent {
+    return [NSSet setWithObjects:@"lComponent", @"aComponent",nil];
+}
+
++ (NSSet *)keyPathsForValuesAffectingRedComponent {
+    return [NSSet setWithObject:@"lComponent"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingBlueComponent {
+    return [NSSet setWithObjects:@"lComponent", @"bComponent", nil];
+}
+
++ (NSSet *)keyPathsForValuesAffectingColor {
+    return [NSSet setWithObjects:@"redComponent", @"greenComponent",@"blueComponent", nil];
+}
+
+```
+通过color的属性依赖设置，在原色组分lComponent、aComponent、bComponent发生变化时观察者仍能收到color变化的通知。
+
+
+
 
 
