@@ -59,6 +59,10 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
 **2.**KVO的简单应用实例
 KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击view的时候更新model的(person)数据并触发UI同步。可以看到应用KVO轻松的监听到模型数据的变化，进而在回调中更新UI。
 
+<div align="center">
+<img src = "assets/pic8-1.gif"</>
+</div>
+
  ```objc
 @interface ViewController ()
 - (IBAction)randomAge:(UIButton *)sender;
@@ -96,8 +100,6 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
  
  @end
  ```
- <div align="center">
- <img src = "assets/pic8-1.gif"</>
-</div>
+
 
 
