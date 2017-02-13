@@ -60,15 +60,15 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
 KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击view的时候更新model的(person)数据并触发UI同步。可以看到应用KVO轻松的监听到模型数据的变化，进而在回调中更新UI。
 
  ```objc
- @interface ViewController ()
-
- @property (weak, nonatomic) IBOutlet UILabel  *ageLabel;
+@interface ViewController ()
+- (IBAction)randomAge:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UILabel  *ageLabel;
 @property (strong, nonatomic) Person *person;
 @end
 
  @implementation ViewController
 
- - (void)viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.person = [[Person alloc]init];
     //创建观察者
@@ -78,23 +78,27 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
                  context:nil];
 
  }
-
- - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    //更新model数据
-    self.person.myAge = arc4random() % 100 ;
-}
-
- - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+ 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     //UI同步
     self.ageLabel.text = [NSString stringWithFormat:@"%@",change[NSKeyValueChangeNewKey]];
 }
 
-  - (void)dealloc {
+- (IBAction)randomAge:(UIButton *)sender {
+    //更新model数据
+    self.person.myAge = arc4random() % 100 ;
+}
+
+- (void)dealloc {
     //移除观察者
     [self removeObserver:self forKeyPath:@"myAge"];
- }
+}
  
  @end
  ```
 
- 
+ <div align="center">
+<img src = "assets/pic8-1.gif"</>
+</div>
+
+
