@@ -49,5 +49,10 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
 3）change：保存信息改变的字典（可能有旧的值，新的值等）
 4）context：上下文，可以用来区分不同的KVO监听。
 
+- 移除观察者
+观察者一定要在适当的时候将其移除。
+```objc
+[student removeObserver:teacher forKeyPath:@"name" context:&PrivateKVOContext];
+```
 
  
