@@ -1,7 +1,7 @@
 #KVO
 KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个被观察对象(如student对象)，当被观察对象student的某个属性(如name)发生改变时观察者对象(如teacher)会收到通知，同时作出相应处理(这孩子，怎么能随便改名呢，把你家长叫来)。
 
-**1.**KVO的应用
+**1.**KVO的应用步骤
 - 注册观察者，实施监听:
 ```objc
     [student addObserver:teacher
@@ -33,8 +33,8 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
  
 - 在回调方法处理属性变化
 每当监听的keypath发生改变就会调用该方法：
- ```objc
- - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+```objc
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if (context ==  &PrivateKVOContext) {
         if ([keyPath isEqualToString:@"name"]) {
             NSString *oldName = change[NSKeyValueChangeOldKey];
@@ -54,5 +54,45 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
 ```objc
 [student removeObserver:teacher forKeyPath:@"name" context:&PrivateKVOContext];
 ```
+**2.**KVO的简单应用实例
+KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击view的时候更新model的(person)数据并触发UI同步。
+
+ ```objc
+ @interface ViewController ()
+
+ @property (weak, nonatomic) IBOutlet UILabel  *ageLabel;
+@property (strong, nonatomic) Person *person;
+@end
+
+ @implementation ViewController
+
+ - (void)viewDidLoad {
+    [super viewDidLoad];
+    self.person = [[Person alloc]init];
+    //创建观察者
+    [self.person addObserver:self
+              forKeyPath:@"myAge"
+                 options:NSKeyValueObservingOptionNew
+                 context:nil];
+
+ }
+
+ - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    //更新model数据
+    self.person.myAge = arc4random() % 100 ;
+}
+
+ - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    //UI同步
+    self.ageLabel.text = [NSString stringWithFormat:@"%@",change[NSKeyValueChangeNewKey]];
+}
+
+  - (void)dealloc {
+    //移除观察者
+    [self removeObserver:self forKeyPath:@"myAge"];
+ }
+ 
+ @end
+ ```
 
  
