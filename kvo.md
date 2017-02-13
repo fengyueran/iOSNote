@@ -30,11 +30,12 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
  }
  ```
  5）context:接收一个C指针，可以为kvo的回调方法传值。
- 
+
 - 在回调方法处理属性变化
 每当监听的keypath发生改变就会调用该方法：
-```objc
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+
+ ```objc
+ - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if (context ==  &PrivateKVOContext) {
         if ([keyPath isEqualToString:@"name"]) {
             NSString *oldName = change[NSKeyValueChangeOldKey];
@@ -54,8 +55,9 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
 ```objc
 [student removeObserver:teacher forKeyPath:@"name" context:&PrivateKVOContext];
 ```
+
 **2.**KVO的简单应用实例
-KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击view的时候更新model的(person)数据并触发UI同步。
+KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击view的时候更新model的(person)数据并触发UI同步。可以看到应用KVO轻松的监听到模型数据的变化，进而在回调中更新UI。
 
  ```objc
  @interface ViewController ()
