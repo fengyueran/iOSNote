@@ -32,7 +32,7 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
  5）context:接收一个C指针，指向希望监听的属性。如：&self->_name
  
 - 在回调方法处理属性变化
-
+每当监听的keypath发生改变就会调用该方法：
  ```objc
  - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if (context ==  &PrivateKVOContext) {
@@ -43,4 +43,11 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
     }
 }
 ```
+参数说明：
+1）keyPath：被监听的keyPath , 用来区分不同的KVO监听；
+2）object：被观察对象，可以获得修改后的属性值；
+3）change：保存信息改变的字典（可能有旧的值，新的值等）
+4）context：上下文，用来区分不同的KVO监听。
+
+
  
