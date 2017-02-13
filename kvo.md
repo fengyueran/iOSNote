@@ -48,6 +48,22 @@ KVO即key-value-observing,键值观察。KVO提供了一种机制，指定一个
 1）keyPath：被监听的keyPath , 用来区分不同的KVO监听；
 2）object：被观察对象，可以获得修改后的属性值；
 3）change：保存信息改变的字典（可能有旧的值，新的值等）
+```objc
+默认change参数会包含一个NSKeyValueChangeKindKey键值对，传递被监听属性的变化类型：
+enum {
+//属性被重新设置
+NSKeyValueChangeSetting = 1,
+//表示更改的是集合属性，分别代表插入、删除、替换操作
+NSKeyValueChangeInsertion = 2,
+NSKeyValueChangeRemoval = 3,
+NSKeyValueChangeReplacement = 4
+};
+typedef NSUInteger NSKeyValueChange;
+
+ ```
+  如果NSKeyValueChangeKindKey参数是针对集合属性的三个之一，change  参数还会包含一个NSKeyValueChangeIndexesKey键值对，表示变化的index。
+  
+
 4）context：上下文，可以用来区分不同的KVO监听。
 
 - 移除观察者
