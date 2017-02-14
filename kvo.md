@@ -181,7 +181,7 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
 通过color的属性依赖设置，在原色组分lComponent、aComponent、bComponent发生变化时观察者仍能收到color变化的通知。
 
 **5.**KVO机制
-前面已经了解到KVO的基本用法，那么KVO底层是如何实现的呢？Let me think，既然KVO能够监听属性的变化，那么在属性的set方法中判断如果属性值发生了变化
+前面已经了解到KVO的基本用法，那么KVO底层是如何实现的呢？Let me think，既然KVO能够监听属性的变化，那么在被观察者属性的set方法中判断如果属性值发生了变化
 
 
 
