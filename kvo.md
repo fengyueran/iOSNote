@@ -189,7 +189,55 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
     _name = @"newName";
 }
 ```
+KVO测试：
+```objc
+//辅助代码
+static NSArray *ClassMethodNames(Class c) {
+    NSMutableArray *array = [NSMutableArray array];
+    unsigned int methodCount = 0;
+    Method *methodList = class_copyMethodList(c, &methodCount);
+    unsigned int i;
+    for (i = 0; i < methodCount; i++) {
+        [array addObject:NSStringFromSelector(method_getName(methodList[i]))];
+    }
+    
+    free(methodList);
+    
+    return array;
+}
 
+static void PrintDescription(NSString *name, id obj) {
+    struct objc_object *objcet = (__bridge struct objc_object *)obj;
+    
+    Class cls = objcet->isa;
+    
+    NSString *str = [NSString stringWithFormat:@"%@: %@\n\tNSObject class %s\n\tlibobjc class %s : super class %s\n\timplements methods <%@>",
+                     name,
+                     obj,
+                     class_getName([obj class]),
+                     class_getName(cls),
+                     class_getName(class_getSuperclass(cls)),
+                     [ClassMethodNames(cls) componentsJoinedByString:@", "]];
+    printf("%s\n", [str UTF8String]);
+}
+
+    // 测试代码
+    Person *person1 = [[Person alloc] init];
+    Person *person2 = [[Person alloc] init];
+
+    [person2 addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew context:NULL];
+    PrintDescription(@"person1", person1);
+    PrintDescription(@"person2", person2);
+    
+    //输出
+    person1: <Person: 0x60800002fec0>
+	NSObject class Person
+	libobjc class Person : super class NSObject 
+	
+    person2: <Person: 0x60800002fee0>
+	NSObject class Person
+	libobjc class NSKVONotifying_Person : super class Person
+```
 
 
 
