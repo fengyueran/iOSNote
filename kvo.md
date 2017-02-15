@@ -67,7 +67,7 @@ typedef NSUInteger NSKeyValueChange;
 4）context：上下文，可以用来区分不同的KVO监听。
 
 - 移除观察者
-观察者一定要在适当的时候将其移除。
+因为添加观察者并不会retain，所以即使被观察者被释放了其监听信息仍旧存在，如果不将观察者移除就会出现崩溃。
 ```objc
 [student removeObserver:teacher forKeyPath:@"name" context:&PrivateKVOContext];
 ```
