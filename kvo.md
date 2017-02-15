@@ -233,12 +233,13 @@ static void PrintDescription(NSString *name, id obj) {
     person1: <Person: 0x60800002fec0>
 	NSObject class Person
 	libobjc class Person : super class NSObject 
-	
+	implements methods <.cxx_destruct, name, setName:>
     person2: <Person: 0x60800002fee0>
 	NSObject class Person
 	libobjc class NSKVONotifying_Person : super class Person
+	implements methods <setName:, class, dealloc, _isKVOA>
 ```
-
+可以看到被观察者对像person2的类已经被该为NSKVONotifying_Person了，并且重写了setName方法，在set方法里实现通知。此外当我们试着打印person2对象的类([person2 class])时，仍然是Person。所以在NSKVONotifying_Person中除了重写相应的setter，还重写了class方法，让它返回原先的类。
 
 
 
