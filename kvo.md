@@ -147,7 +147,7 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
         return NO;
     }
     //当为其他key时，自动发送通知
-    return YES;
+    return [super automaticallyNotifiesObserversForKey:key];
 }
 
 @end
