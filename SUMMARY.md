@@ -8,6 +8,7 @@
 * [8.KVO](kvo.md)
 * [9.UIViewController中的loadView、viewDidLoad、viewDidUnload](9uiviewcontroller中的loadview、viewdidload.md)
 * [10.Autorelease Pool](10.autorelease-pool.md)
+* [11.循环引用](11..md)
 * [15.Autolayout](15.autolayout.md)
 * [100.qustion](100.qustion.md)
 * [7.KVC的简单使用](7.kvc.md)
