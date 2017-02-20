@@ -13,5 +13,4 @@
 * 12.Block
 * [15.Autolayout](15.autolayout.md)
 * [100.qustion](100.qustion.md)
-* [7.KVC的简单使用](7.kvc.md)
 
