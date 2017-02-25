@@ -77,14 +77,14 @@ button.imageView.image = [UIImage imageNamed:@"minion"];
 
 - UIControlStateNormal
 
- 正常状态，默认状态，既不是selected状态也不是高亮状态的一个状态。
+ 正常状态，默认状态，既不是selected状态也不是高亮状态的一种状态。
  
 - UIControlStateHighlighted
 
  高亮状态，即按钮被点击且手还未离开按钮的一个状态。
 
 - UIControlStateSelected
- 选中状态，不是字面上理解的按钮被点击选中，可以理解为与高亮和正常状态不同的一种状态，可以通过改变其selected属性来改变这个状态。
+ 选中状态，不是字面上理解的按钮被点击选中，而是一种通过过改变其selected属性来改变的一种状态。
  
 - UIControlStateDisabled
  不可用状态，即按钮此时处于灰色不能响应点击的状态。
@@ -105,7 +105,7 @@ button.imageView.image = [UIImage imageNamed:@"minion"];
 ```
 ![](/assets/pic2-5.gif)
 
-从上面的动图可以看到每次点击,图片切换了，但是当点击按钮且离开按钮前显示了图片默认的高亮状态图，感觉有些突兀想直接切换不要显示高亮状态的图片。有没有什么方法可以使状态切换由normal->highlighted->selected跳过highlighted变为normal->selected呢？那就把正常状态到高亮设置成一样，把选中状态到高亮状态的图片设置成一样不就没有突变了么。
+从上面的动图可以看到每次点击,图片切换了，但是当点击按钮且离开按钮前显示了图片默认的高亮状态图，感觉有些突兀，想直接切换不要显示高亮状态的图片。有没有什么方法可以使状态切换由normal->highlighted->selected跳过highlighted变为normal->selected呢？那就把正常状态到高亮设置成一样，把选中状态到高亮状态的图片设置成一样不就没有突变了么。
 
 ```objc
 - (void)viewDidLoad {
