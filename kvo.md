@@ -1,7 +1,7 @@
 #KVO
-KVO即key-value-observing,键值观察，是一种观察者模式的实现机制(另一种为Notification)。KVO提供了一种机制，指定一个被观察对象(如student对象)，当被观察对象student的某个属性(如name)发生改变时观察者对象(如teacher)会收到通知，同时作出相应处理(这孩子，怎么能随便改名呢，把你家长叫来)。
+KVO即key-value-observing，键值观察，是一种观察者模式的实现机制(另一种为Notification)。KVO提供了一种机制，指定一个被观察对象(如student对象)，当被观察对象student的某个属性(如name)发生改变时观察者对象(如teacher)会收到通知，同时作出相应处理(这孩子，怎么能随便改名呢，把你家长叫来)。
 
-**1.**KVO的应用步骤
+#####1.KVO的应用步骤
 - 注册观察者，实施监听:
 ```objc
     [student addObserver:teacher
@@ -18,7 +18,7 @@ KVO即key-value-observing,键值观察，是一种观察者模式的实现机制
  4）options:属性配置，有四个值：
  ```objc
  typedef NS_OPTIONS(NSUInteger, NSKeyValueObservingOptions) {
- //接收方法中传入属性变化后的新值，键为NSKeyValueChangeNewKey
+      //接收方法中传入属性变化后的新值，键为NSKeyValueChangeNewKey
     NSKeyValueObservingOptionNew = 0x01,
     //接收方法中传入属性变化前的旧值，键为NSKeyValueChangeOldKey
     NSKeyValueObservingOptionOld = 0x02,
@@ -67,12 +67,13 @@ typedef NSUInteger NSKeyValueChange;
 4）context：上下文，可以用来区分不同的KVO监听。
 
 - 移除观察者
-因为添加观察者并不会retain，所以即使被观察者被释放了其监听信息仍旧存在，如果不将观察者移除就会出现崩溃。
+
+ 因为添加观察者并不会retain，所以即使被观察者被释放了，其监听信息仍旧存在，如果不将观察者移除就会出现崩溃。
 ```objc
 [student removeObserver:teacher forKeyPath:@"name" context:&PrivateKVOContext];
 ```
 
-**2.**KVO的简单应用实例
+#####2.KVO的简单应用实例
 KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击view的时候更新model的(person)数据并触发UI同步。可以看到应用KVO轻松的监听到模型数据的变化，进而在回调中更新UI。
 
 <div align="center">
@@ -117,7 +118,7 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
  @end
  ```
 
-**3.**手动键值观察
+#####3.手动键值观察
 在以上KVO的应用中通过创建观察者，在属性变化时就会自动发出通知，而有些场景需要人为的控制通知的发送，这需要重写被观察者对象属性的getter/setter方法。
 
 ```objc
@@ -153,7 +154,7 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
 @end
 ```
 
-**4.**设置属性之间的依赖
+#####4.设置属性之间的依赖
 
 假设我要监听一个color属性的变化，而一个color又与三原色相关，每种原色又由不同的组分构成，如此我们就需要监听N个原色属性的变化，每个原色属性变化就去设置color的值，我的天，太麻烦了，事情总是有解决的办法：KVO给我们提供了这种键之间的依赖方法
 ```objc
@@ -180,7 +181,7 @@ KVO的常用场景是在MVC中同步model和UI，实现这样的需求：点击v
 ```
 通过color的属性依赖设置，在原色组分lComponent、aComponent、bComponent发生变化时观察者仍能收到color变化的通知。
 
-**5.**KVO机制
+#####5.KVO机制
 前面已经了解到KVO的基本用法，那么KVO底层是如何实现的呢？Let me think，既然KVO能够监听属性的变化，那么在被观察者属性的set方法中判断如果属性值发生了变化就向观察者发送通知就可以实现，似乎很简单，但事实是KVO并没有对被观察者进行显示地重写set方法，那应该在哪重写set方法呢？
 苹果通过isa混写(isa-swizzling)来实现KVO。当创建观察者观察一个对象person时，KVO机制会动态的创建一个名为NSKVONotifying_Person的新类(继承自person的本类Person)并将对象person的isa指针从Person类指向NSKVONotifying_Person(在这里只需要知道对象isa指针指向哪个类，对象就会到哪个类去寻找对应方法)。到这里我们应该找到了重写set方法的地方，只要在NSKVONotifying_Person中重写了Person的对应观察属性name的set方法，在被观察对象person的属性name被修改的时候会调用NSKVONotifying_Person中该属性的set方法，在set方法中完成相应的通知工作从而实现了属性变化的监听。由此可以知道只有当属性值是通过set方法修改的时KVO才有效，例如在Person中有这样一个方法：
 ```objc
