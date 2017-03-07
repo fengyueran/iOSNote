@@ -15,7 +15,9 @@
 * [15.Autolayout](15.autolayout.md)
 * [16.Masonry的简单使用](16.masonry.md)
 * [20.iOS中的堆栈区](20.iOS中的堆栈区.md)
-* [100.qustion](100.qustion.md)
 * [21.AVPlayer](21.avplayer.md)
 * [19.RunLoop](19.runloop.md)
+* [100.qustion](100.qustion.md)
+* [99.xcode使用技巧](99.xcode.md)
+* [98.Git的简单使用](98.git.md)
 
