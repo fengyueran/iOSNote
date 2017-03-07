@@ -7,7 +7,7 @@
 * [4.UITableView](4.uitableview.md)
 * [6.isa指针](6.isa.md)
 * [7.KVC的简单使用](7.kvc.md)
-* [8.KVO](kvo.md)
+* [8.KVO](8.kvo.md)
 * [9.UIViewController中的loadView、viewDidLoad、viewDidUnload](9.uiviewcontroller中的loadview、viewdidload.md)
 * [10.Autorelease Pool](10.autorelease-pool.md)
 * [11.循环引用](11.循环引用.md)
@@ -17,7 +17,8 @@
 * [20.iOS中的堆栈区](20.iOS中的堆栈区.md)
 * [21.AVPlayer](21.avplayer.md)
 * [19.RunLoop](19.runloop.md)
-* [100.qustion](100.qustion.md)
-* [99.xcode使用技巧](99.xcode.md)
 * [98.Git的简单使用](98.git.md)
+* [99.xcode使用技巧](99.xcode.md)
+* [100.qustion](100.qustion.md)
+
 
