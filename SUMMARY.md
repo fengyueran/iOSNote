@@ -21,5 +21,6 @@
 * [99.xcode使用技巧](99.xcode.md)
 * [100.qustion](100.qustion.md)
 * [101.Markdown](101.Markdown.md)
-* 102. Pod的使用
+* Pod的使用
+* [30.数据类型格式化说明符](30..md)
 
