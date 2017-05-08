@@ -21,11 +21,9 @@
 * [99.xcode使用技巧](99.xcode.md)
 * [100.qustion](100.qustion.md)
 * [101.Markdown](101.Markdown.md)
-<<<<<<< HEAD
 * [30.补丁\(patch\)的制作与应用](30bu-4e0128-patch-de-zhi-zuo-yu-ying-yong.md)
-=======
 * Pod的使用
 * [30.数据类型格式化说明符](30..md)
 * [29.iOS开发证书与配置文件的使用](29.ios.md)
->>>>>>> c8c84fa4801803ea6ea2b7d434c715e66b326a23
+* [102.数据库的几个概念](102shu-ju-ku-de-ji-ge-gai-nian.md)
 
