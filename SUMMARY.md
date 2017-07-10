@@ -18,8 +18,8 @@
 * [20.iOS中的堆栈区](20.iOS中的堆栈区.md)
 * [21.AVPlayer](21.avplayer.md)
 * [22.FMDB的简单使用](22.md)
-* [23.iOS多线程](23iosduo-xian-cheng.md)
 * [29.iOS开发证书与配置文件的使用](29.ios.md)
+* [23.iOS多线程](23iosduo-xian-cheng.md)
 * [30.补丁\(patch\)的制作与应用](30bu-4e0128-patch-de-zhi-zuo-yu-ying-yong.md)
 * Pod的使用
 * [31.数据类型格式化说明符](31.格式化说明符.md)

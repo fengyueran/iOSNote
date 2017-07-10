@@ -1,4 +1,40 @@
- ###iOS 并发编程 4 种方式
+####1. 什么叫线程
+ 试想有这样一份代码
+ ```
+- (void)main {
+    [self startA];
+}
+
+- (void)startA {
+    while (true) {
+        NSLog(@"I am in A");
+    }
+    [self startB];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+          [self startB];
+    });
+}
+
+- (void)startB {
+    while (true) {
+        NSLog(@"I am in B");
+    }
+}
+
+ ```
+ 这份代码保存在寄存器上，当运行程序时就执行这份代码。
+我们知道线程是执行程序最基本的单元，它有自己栈和寄存器，说得再具体一些，线程就是“一个CPU执行的一条无分叉的命令列”。也就是说对于上面这份代码而言执行过程必须是：
+  ```
+main=>startA=>startB
+```
+A没有执行完一定不会执行B，因为对于一条线程而言已经确定了其执行路径main=>A=>B，如此，我们另开一条线程，也就有了另一条执行代码的路径,直接dispatch中的代码[self startB];
+```
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+          [self startB];
+    });
+
+```
+  ###iOS 并发编程 4 种方式
  
  - Pthreads
  - NSThread
