@@ -23,7 +23,9 @@ Caches 目录：用于存放应用程序专用的支持文件，保存应用程�
 **2. 获取各种文件目录的路径**
 
 NSSearchPathForDirectoriesInDomains:
-NSSearchPathForDirectoriesInDomains方法用于查找目录，返回指定范围内的指定名称的目录的路径集合。有三个参数：
+
+NSSearchPathForDirectoriesInDomains方法用于查找目录，返回了一个包含用户文档目录作为第一个元素的数组。
+有三个参数：
 - directory NSSearchPathDirectory类型的enum值，表明我们要搜索的目录名称，比如这里用NSDocumentDirectory表明我们要搜索的是Documents目录。如果我们将其换成NSCachesDirectory就表示我们搜索的是Library/Caches目录。
 
 - domainMask NSSearchPathDomainMask类型的enum值，指定搜索范围，这里的NSUserDomainMask表示搜索的范围限制于当前应用的沙盒目录。还可以写成NSLocalDomainMask（表示当前机器中/Library）、NSNetworkDomainMask（表示网络可见主机/Network）等。
