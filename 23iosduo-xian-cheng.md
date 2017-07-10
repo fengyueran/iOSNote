@@ -36,7 +36,7 @@ void *start(void *data){
     NSLog(@"==current==%@",[NSThread currentThread]);
     return NULL;
 }
-
-
 @end
 ```
+使用起来非常困难，需要开发者自己管理 pthread_t 的声明和销毁，一不小心就有可能出问题，比如上面的代码没有销毁 pthread_t thread 这条线程。
+
