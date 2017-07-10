@@ -13,6 +13,19 @@
 
 下面简单给出使用 Pthreads 并发编程的范例代码和 Pthreads 相关数据结构：
 ```
+#import <pthread.h>
+
+@interface PthreadLoadViewController ()
+
+@end
+
+@implementation PthreadLoadViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+}
+
 - (IBAction)load:(UIButton *)sender {
     pthread_t thread;
     //创建一个线程并自动执行
@@ -23,4 +36,7 @@ void *start(void *data){
     NSLog(@"==current==%@",[NSThread currentThread]);
     return NULL;
 }
+
+
+@end
 ```
