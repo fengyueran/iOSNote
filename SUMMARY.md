@@ -21,8 +21,6 @@
 * [30.补丁\(patch\)的制作与应用](30bu-4e0128-patch-de-zhi-zuo-yu-ying-yong.md)
 * Pod的使用
 * [31.数据类型格式化说明符](30.格式化说明符.md)
-
-
 * [98.Git的简单使用](98.git.md)
 * [99.xcode使用技巧](99.xcode.md)
 * [100.qustion](100.qustion.md)
