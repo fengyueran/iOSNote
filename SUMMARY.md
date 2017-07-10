@@ -17,6 +17,8 @@
 * [19.RunLoop](19.runloop.md)
 * [20.iOS中的堆栈区](20.iOS中的堆栈区.md)
 * [21.AVPlayer](21.avplayer.md)
+* [29.iOS开发证书与配置文件的使用](29.ios.md)
+
 * [98.Git的简单使用](98.git.md)
 * [99.xcode使用技巧](99.xcode.md)
 * [100.qustion](100.qustion.md)
@@ -24,6 +26,6 @@
 * [30.补丁\(patch\)的制作与应用](30bu-4e0128-patch-de-zhi-zuo-yu-ying-yong.md)
 * Pod的使用
 * [30.数据类型格式化说明符](30..md)
-* [29.iOS开发证书与配置文件的使用](29.ios.md)
+
 * [102.数据库的几个概念](102shu-ju-ku-de-ji-ge-gai-nian.md)
 
