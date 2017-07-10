@@ -25,7 +25,7 @@
 * [101.Markdown](101.Markdown.md)
 * [30.补丁\(patch\)的制作与应用](30bu-4e0128-patch-de-zhi-zuo-yu-ying-yong.md)
 * Pod的使用
-* [30.数据类型格式化说明符](30..md)
+* [31.数据类型格式化说明符](30..md)
 
 * [102.数据库的几个概念](102shu-ju-ku-de-ji-ge-gai-nian.md)
 
