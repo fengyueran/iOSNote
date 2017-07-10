@@ -11,7 +11,7 @@
 
 是一套纯C语言的通用API，且线程的生命周期需要程序员自己管理，使用难度较大，笔者不建议使用。
 
-下面简单给出使用 Pthreads 并发编程的范例代码和 Pthreads 相关数据结构：
+下面简单给出使用 Pthreads 并发编程的范例代码
 ```
 #import <pthread.h>
 
@@ -40,3 +40,10 @@ void *start(void *data){
 ```
 使用起来非常困难，需要开发者自己管理 pthread_t 的声明和销毁，一不小心就有可能出问题，比如上面的代码没有销毁 pthread_t thread 这条线程。
 
+**2) NSThread**
+>NSThread是 Objective-C 的基础框架的一部分，并为开发者提供一种方法来创建和管理线程。
+
+特点：
+
+- 基于OC语言的API，使得其简单易用（针对 Pthreads 而言），面向对象操作
+- 线程的生命周期由程序员管理，偶尔使用（多用于 Debug）
