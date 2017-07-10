@@ -27,7 +27,7 @@
   ```
 main=>startA=>startB
 ```
-A没有执行完一定不会执行B，因为对于一条线程而言已经确定了其执行路径main=>A=>B，如此，我们另开一条线程，也就有了另一条执行代码的路径,直接dispatch中的代码[self startB];
+A没有执行完一定不会执行B，因为对于一条线程而言只有一条执行路径main=>A=>B，如此，我们另开一条线程，也就有了另一条执行代码的路径,直接执行dispatch中的代码[self startB];
 ```
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
           [self startB];
