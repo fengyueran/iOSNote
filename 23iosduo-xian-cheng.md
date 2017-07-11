@@ -190,6 +190,12 @@ dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 }
 ```
 
+使用 Dispatch Queue 实现应用并发时，也需要注意线程安全性：
+
+- Dispatch queue 本身是线程安全的。换句话说，你可以在应用的任意线程中提交任务到 dispatch queue，不需要使用锁或其它同步机制。
+- 不要在执行任务代码中调用 dispatch_sync 函数调度相同的 queue，这样做会死锁这个 queue。如果你需要 dispatch 到当前 queue，需要使用 dispatch_async 函数异步调度。
+
+
 **Dispatch Group:**
 
 用于监控一组 Block 对象完成(你可以同步或异步地监控 block)。
