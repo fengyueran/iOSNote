@@ -147,9 +147,9 @@ GCD以block为基本单位，一个block中的代码可以为一个任务。下�
 GCD 提供函数，让应用访问几个公共 Dispatch Queue：
 
 - 使用 dispatch_get_main_queue 函数获得应用主线程关联的串行 dispatch queue。
-- 使用 dispatch_get_global_queue 来获得共享的并发 queue，优先级从低到高依次是`DISPATCH_QUEUE_PRIORITY_LOW，DISPATCH_QUEUE_PRIORITY_DEFAULT，DISPATCH_QUEUE_PRIORITY_HIGH。`
+- 使用 dispatch_get_global_queue 来获得共享的并发 queue，这里的两个参数得说明一下：第一个参数用于指定优先级,优先级从低到高依次是`DISPATCH_QUEUE_PRIORITY_LOW，DISPATCH_QUEUE_PRIORITY_DEFAULT，DISPATCH_QUEUE_PRIORITY_HIGH。`第二个参数目前未使用到，默认0即可
 
-```//获得共享并发queue
+ ```//获得共享并发queue
 - (void)getQueue {
     //获取主队列
     dispatch_queue_t queue = dispatch_get_main_queue();
@@ -157,3 +157,7 @@ GCD 提供函数，让应用访问几个公共 Dispatch Queue：
     dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 }
 ```
+
+
+**添加任务到queue:**
+要执行一个任务，你需要将它 dispatch 到一个适当的 dispatch queue，你可以同步或异步地 dispatch 一个任务，也可以单个或按组（group）来 dispatch。
