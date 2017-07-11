@@ -308,8 +308,7 @@ NSOperation的简介：
 **1）使用子类NSInvocationOperation**
 ```
     NSInvocationOperation *invocationOperation = [[NSInvocationOperation alloc]initWithTarget:self selector:@selector(loadImageSource:)  object:imgUrl];
-//    [invocationOperation start];//直接会在当前线程主线程执行
-//
+//  [invocationOperation start];//直接会在当前线程主线程执行
     NSOperationQueue *queue = [[NSOperationQueue alloc]init];
     [queue addOperation:invocationOperation];
 ```
