@@ -292,3 +292,24 @@ static dispatch_queue_t _concurrentQueue;
 在这个代码中用了dispatch_barrier_async，可以翻译成栅栏（barrier），它可以往队列里面发送任务（块，也就是block），这个任务有栅栏（barrier）的作用。
 
 在队列中，barrier块必须单独执行，不能与其他block并行。这只对并发队列有意义，并发队列如果发现接下来要执行的block是个barrier block，那么就一直要等到当前所有并发的block都执行完毕，才会单独执行这个barrier block代码块，等到这个barrier block执行完毕，再继续正常处理其他并发block。在上面的代码中，setter方法中使用了barrier block以后，对象的读取操作依然是可以并发执行的，但是写入操作就必须单独执行了。
+
+
+**
+4）NSOperation**
+
+NSOperation的简介：
+- 是OC语言中基于GCD的面向对象的封装，使用起来比GCD更加简单。提供了一些GCD不好实现的功能，苹果推荐使用。NSOperation还不用关心线程和线程的声明周期。
+- NSOperation是个抽象类无法直接使用。因为方法只有声明没有实现。
+- 子类：NSInvocationOperation和NSBlockOperation，自定义NSOperation操作默是异步的。
+- 队列 : NSOperationQueue队列默认是并发的。
+- 核心：GCD的核心 : 将任务添加到队列中。OP的核心 : 将操作添加到队列中。
+
+
+**1）使用子类NSInvocationOperation**
+```
+    NSInvocationOperation *invocationOperation = [[NSInvocationOperation alloc]initWithTarget:self selector:@selector(loadImageSource:)  object:imgUrl];
+//    [invocationOperation start];//直接会在当前线程主线程执行
+//
+    NSOperationQueue *queue = [[NSOperationQueue alloc]init];
+    [queue addOperation:invocationOperation];
+```
