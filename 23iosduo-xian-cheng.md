@@ -244,3 +244,45 @@ static dispatch_queue_t _concurrentQueue;
 }
 @end
 ```
+```
+#import <Foundation/Foundation.h>
+ 
+@interface ZYPerson : NSObject
+@property (nonatomic, copy) NSString *name;
+@end
+ 
+ 
+#import "ZYPerson.h"
+ 
+@interface ZYPerson ()
+@end
+ 
+static NSString *_name;
+static dispatch_queue_t _concurrentQueue;
+@implementation ZYPerson
+- (instancetype)init
+{
+    if (self = [super init]) {
+       _concurrentQueue = dispatch_queue_create("com.person.syncQueue", DISPATCH_QUEUE_CONCURRENT);
+    }
+    return self;
+}
+- (void)setName:(NSString *)name
+{
+    dispatch_barrier_async(_concurrentQueue, ^{
+        _name = [name copy];
+    });
+}
+- (NSString *)name
+{
+    __block NSString *tempName;
+    dispatch_sync(_concurrentQueue, ^{
+        tempName = _name;
+    });
+    return tempName;
+}
+
+```
+在这个代码中用了dispatch_barrier_async，可以翻译成栅栏（barrier），它可以往队列里面发送任务（块，也就是block），这个任务有栅栏（barrier）的作用。
+
+在队列中，barrier块必须单独执行，不能与其他block并行。这只对并发队列有意义，并发队列如果发现接下来要执行的block是个barrier block，那么就一直要等到当前所有并发的block都执行完毕，才会单独执行这个barrier block代码块，等到这个barrier block执行完毕，再继续正常处理其他并发block。在上面的代码中，setter方法中使用了barrier block以后，对象的读取操作依然是可以并发执行的，但是写入操作就必须单独执行了。
