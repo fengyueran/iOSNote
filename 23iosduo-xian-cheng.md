@@ -179,3 +179,12 @@ dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     });
 ```
 **死锁：**
+```
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    //添加同步任务到main queue
+  dispatch_sync(dispatch_get_main_queue(), ^{
+        NSLog(@"main task");
+    });
+}
+```
