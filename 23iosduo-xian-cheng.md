@@ -193,3 +193,54 @@ dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 **Dispatch Group:**
 
 用于监控一组 Block 对象完成(你可以同步或异步地监控 block)。
+```
+       dispatch_group_t group = dispatch_group_create();
+        __block UIImage *image1 = nil;
+        __block UIImage *image2 = nil;
+        
+        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            image1 = [self loadImageD:imgUrl1];
+        });
+        
+        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            image2 = [self loadImageD:imgUrl2];
+        });
+        //dispatch_group 执行完一组异步操作后可以通过 dispatch_group_notify来通知主线程，反馈信息给用户。
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+            self.imageView1.image = image1;
+            self.imageView2.image = image2;
+        });
+```
+**线程安全：**
+把写操作与读操作都安排在同一个同步串行队列里面执行，这样的话，所有针对属性的访问操作就都同步了。它只可以实现单读、单写。整体来看，我们最终要解决的问题是，在写的过程中不能被读，以免数据不对，但是读与读之间并没有任何的冲突！
+
+```
+@interface ZYPerson ()
+@end
+ 
+static NSString *_name;
+static dispatch_queue_t _concurrentQueue;
+@implementation ZYPerson
+- (instancetype)init
+{
+    if (self = [super init]) {
+       _concurrentQueue = dispatch_queue_create("com.person.syncQueue", DISPATCH_QUEUE_CONCURRENT);
+    }
+    return self;
+}
+- (void)setName:(NSString *)name
+{
+    dispatch_barrier_async(_concurrentQueue, ^{
+        _name = [name copy];
+    });
+}
+- (NSString *)name
+{
+    __block NSString *tempName;
+    dispatch_sync(_concurrentQueue, ^{
+        tempName = _name;
+    });
+    return tempName;
+}
+@end
+```
