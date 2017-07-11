@@ -129,3 +129,17 @@ GCD以block为基本单位，一个block中的代码可以为一个任务。下�
 ![](/assets/pic23-1.jpg)
 
 可以看到，同步方法不一定在本线程，异步方法方法也不一定新开线程（考虑主队列）。
+
+- 创建和管理 Dispatch Queue
+
+dispatch_queue_create 函数用于创建 queue，两个参数分别是 queue 名和一组 queue 属性。调试器和性能工具会显示 queue 的名字，便于你跟踪任务的执行。
+ ```
+ //创建queue
+- (void)createQueue {
+   //串行队列
+    dispatch_queue_t queue = dispatch_queue_create("", NULL);
+    dispatch_queue_t serialQueue = dispatch_queue_create("serial_queue", DISPATCH_QUEUE_SERIAL);
+    //并行队列
+    dispatch_queue_t concurrentQueue = dispatch_queue_create("concurrent_queue", DISPATCH_QUEUE_CONCURRENT);    
+}
+```
