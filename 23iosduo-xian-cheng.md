@@ -312,3 +312,13 @@ NSOperation的简介：
     NSOperationQueue *queue = [[NSOperationQueue alloc]init];
     [queue addOperation:invocationOperation];
 ```
+
+
+**2）使用子类NSBlockOperation**
+```
+    NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        [self loadImageSource:imgUrl];
+    }];
+    NSOperationQueue *queue = [[NSOperationQueue alloc]init];
+    [queue addOperation:blockOperation];
+```
