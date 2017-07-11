@@ -179,6 +179,7 @@ dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     });
 ```
 **死锁：**
+如下代码，在主队列中dispatch_sync添加一个同步任务(block)到主队列，block要在**当前队列**执行就需要等待主队列中dispatch_sync这个任务结束，而执行完block dispatch_sync这个任务才算结束，两个任务相互等待造成无法执行block，造成死锁。
 ```
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -188,3 +189,7 @@ dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     });
 }
 ```
+
+**Dispatch Group:**
+
+用于监控一组 Block 对象完成(你可以同步或异步地监控 block)。
