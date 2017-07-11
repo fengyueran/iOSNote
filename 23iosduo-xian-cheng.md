@@ -307,7 +307,17 @@ static dispatch_queue_t _concurrentQueue;
 
 **
 4）NSOperation**
+NSOperation 和 NSOperationQueue 主要涉及这几个方面：
 
+- NSOperation 和 NSOperationQueue 用法介绍
+- NSOperation 的暂停、恢复和取消
+- 通过 KVO 对 NSOperation 的状态进行检测
+- 多个 NSOperation 的之间的依赖关系
+从简单意义上来说，NSOperation 是对 GCD 中的 block 进行的封装，它也表示一个要被执行的任务。
+
+与 GCD 中的 block 类似，NSOperation 对象有一个 start() 方法表示开始执行这个任务。
+
+不仅如此，NSOperation 表示的任务还可以被取消。它还有三种状态 isExecuted、isFinished 和 isCancelled 以方便我们通过 KVC 对它的状态进行监听。
 NSOperation的简介：
 - 是OC语言中基于GCD的面向对象的封装，使用起来比GCD更加简单。提供了一些GCD不好实现的功能，苹果推荐使用。NSOperation还不用关心线程和线程的声明周期。
 - NSOperation是个抽象类无法直接使用。因为方法只有声明没有实现。
