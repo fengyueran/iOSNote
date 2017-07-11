@@ -322,3 +322,5 @@ NSOperation的简介：
     NSOperationQueue *queue = [[NSOperationQueue alloc]init];
     [queue addOperation:blockOperation];
 ```
+**
+3) 使用继承NSOperation**
