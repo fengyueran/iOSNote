@@ -162,3 +162,14 @@ GCD 提供函数，让应用访问几个公共 Dispatch Queue：
 
 **添加任务到queue:**
 要执行一个任务，你需要将它 dispatch 到一个适当的 dispatch queue，你可以同步或异步地 dispatch 一个任务，也可以单个或按组（group）来 dispatch。
+dispatch_async && dispatch_sync
+```
+        //添加同步任务到global queue
+dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSLog(@"sync task");
+    });
+    //添异步任务到global queue   dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSLog(@"async task");
+
+    });
+```
