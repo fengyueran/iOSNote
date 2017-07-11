@@ -123,7 +123,11 @@ GCD以block为基本单位，一个block中的代码可以为一个任务。下�
 两种执行方式：
 
 - 同步执行
+
+ 比如dispatch_sync，这个函数会把一个block加入到指定的队列中，而且会一直等到执行完blcok，这个函数才返回。因此在block执行完之前，调用dispatch_sync方法的线程是阻塞的。
 - 异步执行
+
+ 一般使用dispatch_async，这个函数也会把一个block加入到指定的队列中，但是和同步执行不同的是，这个函数把block加入队列后不等block的执行就立刻返回了。
 
 关于同步异步、串行并行和线程的关系，下面通过一个表格来总结
 ![](/assets/pic23-1.jpg)
@@ -161,8 +165,9 @@ GCD 提供函数，让应用访问几个公共 Dispatch Queue：
 
 
 **添加任务到queue:**
-要执行一个任务，你需要将它 dispatch 到一个适当的 dispatch queue，你可以同步或异步地 dispatch 一个任务，也可以单个或按组（group）来 dispatch。
-dispatch_async && dispatch_sync
+要执行一个任务，你需要将它 dispatch 到一个适当的 dispatch queue，你可以添加同步或异步任务，也可以单个或按组（group）来 dispatch。
+**
+dispatch_async && dispatch_sync:**
 ```
         //添加同步任务到global queue
 dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -173,3 +178,4 @@ dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
     });
 ```
+**死锁：**
