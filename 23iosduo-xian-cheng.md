@@ -217,6 +217,17 @@ dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             self.imageView2.image = image2;
         });
 ```
+
+**dispatch_after：方法**
+通过 GCD 还可以进行简单的定时操作，比如在 2 秒后执行某个 block 。代码如下：
+```
+    NSLog(@"Delay 2 seconds");
+    double delayInSeconds = 2.0;
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(time, dispatch_get_main_queue(), ^{
+         [self loadImageSource:imgUrl1];
+    });
+```
 **线程安全：**
 把写操作与读操作都安排在同一个同步串行队列里面执行，这样的话，所有针对属性的访问操作就都同步了。它只可以实现单读、单写。整体来看，我们最终要解决的问题是，在写的过程中不能被读，以免数据不对，但是读与读之间并没有任何的冲突！
 
@@ -324,3 +335,4 @@ NSOperation的简介：
 ```
 **
 3) 使用继承NSOperation**
+
