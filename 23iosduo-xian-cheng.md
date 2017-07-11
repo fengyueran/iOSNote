@@ -148,5 +148,11 @@ GCD 提供函数，让应用访问几个公共 Dispatch Queue：
 
 - 使用 dispatch_get_main_queue 函数获得应用主线程关联的串行 dispatch queue。
 - 使用 dispatch_get_global_queue 来获得共享的并发 queue，优先级从低到高依次是`DISPATCH_QUEUE_PRIORITY_LOW，DISPATCH_QUEUE_PRIORITY_DEFAULT，DISPATCH_QUEUE_PRIORITY_HIGH。`
-```
+```//获得共享并发queue
+- (void)getQueue {
+    //获取主队列
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    //获取全局队列
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+}
 ```
