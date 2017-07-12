@@ -5,6 +5,7 @@
 * [2.UIButton](2.UIButton.md)
 * [3.UIScrollView](3.UIScrollView.md)
 * [4.UITableView](4.uitableview.md)
+* [5.App life cycle](5app-life-cycle.md)
 * [6.isa指针](6.isa.md)
 * [7.KVC的简单使用](7.kvc.md)
 * [8.KVO](8.kvo.md)
@@ -12,6 +13,7 @@
 * [10.Autorelease Pool](10.autorelease-pool.md)
 * [11.循环引用](11.循环引用.md)
 * [12.Block](12.block.md)
+* [13.NS\_ENUM & NS\_OPTIONS](13nsenum-and-ns-options.md)
 * [15.Autolayout](15.autolayout.md)
 * [16.Masonry的简单使用](16.masonry.md)
 * [19.RunLoop](19.runloop.md)
@@ -30,6 +32,6 @@
 * [101.Markdown](101.Markdown.md)
 * [102.数据库的几个概念](102shu-ju-ku-de-ji-ge-gai-nian.md)
 * [103.iOS开发实例](103ioskai-fa-shi-li.md)
-* [5.App life cycle](5app-life-cycle.md)
-* [13.NS\_ENUM & NS\_OPTIONS](13nsenum-and-ns-options.md)
+
+
 
