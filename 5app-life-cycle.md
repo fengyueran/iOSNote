@@ -43,4 +43,4 @@ delegateClassName：代理类名
 **2.启动流程**
 下面给出苹果官方的流程图
 ![](/assets/pic5-1.png)
-
+可以看到一个app生命流程由main方法开始=>创建UIApplication对象=>完成一些列初始化工作=>载入UI元素=>app初始化工作完成=>...=>退出结束生命
