@@ -1,7 +1,5 @@
-NS_ENUM & NS_OPTIONS
+###NS_ENUM & NS_OPTIONS
 
-Mattt Thompson撰写、 Croath Liu翻译、 发布于2012年11月19日
-一切皆为对象。
 
 其实有很多种方式你可以在面向过程和面向对象间互相转化，但本文的目的是：有时候抛弃C层面的东西也是很好的。
 
@@ -16,17 +14,18 @@ Mattt Thompson撰写、 Croath Liu翻译、 发布于2012年11月19日
 NS_ENUM 和 NS_OPTIONS 都不算太古老的宏，在iOS 6 / OS X Mountain Lion才开始有，他们都是代替 enum 的更好的办法。
 
 如果你想在更早的iOS或OS X系统中使用这两个宏，简单定义一下就好了：
-
+```
 Objective-C
 #ifndef NS_ENUM
 #define NS_ENUM(_type, _name) enum _name : _type _name; enum _name : _type
 #endif
+```
 enum，或者其他枚举类型（例如每周的星期几，或TableViewCell的类型等），都是通过C的方法去为预设值定义常量。在一个 enum 定义中，没有被赋予特别值的常量都会自动被赋为从0开始的连续值。
 
 有几种合法的方式来定义 enum。容易产生困惑的地方是它们每种方法之间略有不同，但不必须想太多，任选一种即可。
 
 例如：
-
+```
 Objective-C
 enum {
     UITableViewCellStyleDefault,
@@ -34,6 +33,8 @@ enum {
     UITableViewCellStyleValue2,
     UITableViewCellStyleSubtitle
 };
+```
+
 ...定义整型值，但不定义类型。
 
 另一种方法:
