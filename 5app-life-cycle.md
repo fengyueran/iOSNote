@@ -35,3 +35,7 @@ int main(int argc, char* argv[])
 ```
     [UIApplication sharedApplication];
 ```
+他的主要工作就是处理用户事件，他会启动一个事件队列用于管理事件，当收到事件后会发送当前事件到合适的目标控件进行处理，UIApplication还维护一个UIWindow列表，通过该列表就可以与任何一个UIView对象接触。
+
+**AppDelegate的作用：**
+处理app运行中重要的runtime事件，如低内存警告、程序启动退出等。AppDelegate也提供了
