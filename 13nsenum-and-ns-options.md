@@ -34,11 +34,10 @@ enum {
     UITableViewCellStyleSubtitle
 };
 ```
-
-...定义整型值，但不定义类型。
+定义整型值，但不定义类型。
 
 另一种方法:
-
+```
 Objective-C
 typedef enum {
     UITableViewCellStyleDefault,
@@ -46,10 +45,11 @@ typedef enum {
     UITableViewCellStyleValue2,
     UITableViewCellStyleSubtitle
 } UITableViewCellStyle;
-...定义适合特性参数的 UITableViewCellStyle 类型。
+```
+定义适合特性参数的 UITableViewCellStyle 类型。
 
 然而，之前苹果自己的代码中都用这种方法来定义 enum ：
-
+```
 Objective-C
 typedef enum {
     UITableViewCellStyleDefault,
@@ -59,14 +59,15 @@ typedef enum {
 };
 
 typedef NSInteger UITableViewCellStyle;
-...这种方法给出了 UITableViewCellStyle 确定的大小，但并没有告诉编译器这个类型和之前的 enum 有什么关系。
+```
+这种方法给出了 UITableViewCellStyle 确定的大小，但并没有告诉编译器这个类型和之前的 enum 有什么关系。
 
 让我感动的是苹果终于给了这个“宏统一”的 NS_ENUM。
 
-NS_ENUM
+**NS_ENUM**
 
 从现在开始 UITableViewCellStyle 的定义已经变成这个样子了：
-
+```
 Objective-C
 typedef NS_ENUM(NSInteger, UITableViewCellStyle) {
     UITableViewCellStyleDefault,
@@ -74,11 +75,12 @@ typedef NS_ENUM(NSInteger, UITableViewCellStyle) {
     UITableViewCellStyleValue2,
     UITableViewCellStyleSubtitle
 };
+```
 NS_ENUM 的第一个参数是用于存储的新类型的类型。在64位环境下，UITableViewCellStyle 和 NSInteger 一样有8bytes长。你要保证你给出的所有值能被该类型容纳，否则就会产生错误。第二个参数是新类型的名字。大括号里面和以前一样，是你要定义的各种值。
 
 这种实现方法提取了之前各种不同实现的优点，甚至有提示编辑器在进行 switch 判断时检查类型匹配的功能。
 
-NS_OPTIONS
+**NS_OPTIONS**
 
 enum 也可以被定义为按位掩码（bitmask）。用简单的OR (|)和AND (&)数学运算即可实现对一个整型值的编码。每一个值不是自动被赋予从0开始依次累加1的值，而是手动被赋予一个带有一个bit偏移量的值：类似1 << 0、 1 << 1、 1 << 2等。如果你能够心算出每个数字的二进制表示法，例如：10110 代表 22，每一位都可以被认为是一个单独的布尔值。例如在UIKit中， UIViewAutoresizing 就是一个可以表示任何flexible top、bottom、 left 或 right margins、width、height组合的位掩码。
 
