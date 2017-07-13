@@ -44,11 +44,40 @@ UIWindowUIWindow特性：
     return YES;
 }
 ```
-需要注意的地方
+窗口显示需要注意的地方:
 
 - 当发生屏幕旋转事件的时候，UIapplication对象会将旋转事件传递给UIWindow，UIWindow又会将旋转事件传递给它的根控制器，由根控制器决定是否需要旋转。UIapplication对象 -> UIWindow -> 根控制器。
 （[self.window  addsubview:rootVc.view];没有设置根控制器，所以不能跟着旋转）。
 - 设置根控制器可以将对应界面的事情交给对应的控制器去管理。
+
+makeKeyAndVisible的作用：
+见名思义，即：
+- 将window设置为 keywindow
+- 将window移动到其他window的前面并显示
+
+怎么证明呢？运行下面的代码
+```
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+
+    UIViewController *rootVc = [[UIViewController alloc]init];
+    self.window.rootViewController = rootVc;
+    
+    NSLog(@"window=%@",self.window);
+    NSLog(@"keyWindow=%@",application.keyWindow);
+    [self.window makeKeyAndVisible];
+    NSLog(@"window=%@",self.window);
+    NSLog(@"keyWindow=%@",application.keyWindow);
+    
+    return YES;
+}
+```
+打印内容：
+```
+window=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); hidden = YES; gestureRecognizers = <NSArray: 0x60000004edc0>; layer = <UIWindowLayer: 0x60000003ec60>>keyWindow=(null)
+ window=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); gestureRecognizers = <NSArray: 0x60000004edc0>; layer = <UIWindowLayer: 0x60000003ec60>>
+keyWindow=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); gestureRecognizers = <NSArray: 0x60000004edc0>; layer = <UIWindowLayer: 0x60000003ec60>>
+```
 
 
 
