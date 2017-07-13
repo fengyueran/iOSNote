@@ -74,9 +74,11 @@ makeKeyAndVisible的作用：
 ```
 打印内容：
 ```
-window=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); hidden = YES; gestureRecognizers = <NSArray: 0x60000004edc0>; layer = <UIWindowLayer: 0x60000003ec60>>keyWindow=(null)
- window=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); gestureRecognizers = <NSArray: 0x60000004edc0>; layer = <UIWindowLayer: 0x60000003ec60>>
-keyWindow=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); gestureRecognizers = <NSArray: 0x60000004edc0>; layer = <UIWindowLayer: 0x60000003ec60>>
+window=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); hidden = YES; 
+keyWindow=(null)
+
+window=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); 
+keyWindow=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); 
 ```
 
 
