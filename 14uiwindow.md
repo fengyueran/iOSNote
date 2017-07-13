@@ -72,7 +72,8 @@ makeKeyAndVisible的作用：
     return YES;
 }
 ```
-打印内容：
+
+打印内容(省略部分内容)：
 ```
 window=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); hidden = YES; 
 keyWindow=(null)
@@ -80,7 +81,9 @@ keyWindow=(null)
 window=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); 
 keyWindow=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667); 
 ```
-
+对比makeKeyAndVisible前后的打印内容就就可以知道它的底层实现
+- self.window.hidden = NO
+- application.keyWindow = self.window
 
 
 [1]:https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/WindowAndScreenGuide/WindowScreenRolesinApp/WindowScreenRolesinApp.html
