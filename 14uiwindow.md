@@ -44,6 +44,12 @@ UIWindowUIWindow特性：
     return YES;
 }
 ```
+需要注意的地方
+
+- 当发生屏幕旋转事件的时候，UIapplication对象会将旋转事件传递给UIWindow，UIWindow又会将旋转事件传递给它的根控制器，由根控制器决定是否需要旋转。UIapplication对象 -> UIWindow -> 根控制器。
+（[self.window  addsubview:rootVc.view];没有设置根控制器，所以不能跟着旋转）。
+- 设置根控制器可以将对应界面的事情交给对应的控制器去管理。
+
 
 
 [1]:https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/WindowAndScreenGuide/WindowScreenRolesinApp/WindowScreenRolesinApp.html
