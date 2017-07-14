@@ -89,9 +89,34 @@ keyWindow=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667);
 **3.UIWindow的层级**
 UIWindow有层级(UIWindowLevel)之分，层级越高的越显示在外层。UIWindowLevel主要有三个层级
 ```
-UIKIT_EXTERN const UIWindowLevel UIWindowLevelNormal;
-UIKIT_EXTERN const UIWindowLevel UIWindowLevelAlert;
-UIKIT_EXTERN const UIWindowLevel UIWindowLevelStatusBar
+UIKIT_EXTERN const UIWindowLevel UIWindowLevelNormal; //默认，值为0
+UIKIT_EXTERN const UIWindowLevel UIWindowLevelAlert; //值为2000 
+UIKIT_EXTERN const UIWindowLevel UIWindowLevelStatusBar ; // 值为1000
+```
+通常我们所加的view都是在UIWindowLevelNormal这个层级上，也就说明了我们添加的view总是不会覆盖状态栏。
+此外UIWindowLevel是可以进行运算的，以下就是一个覆盖一半状态栏的例子
+```
+@interface AppDelegate ()
+@property (strong, nonatomic) UIWindow *window2;
+@end
+
+@implementation AppDelegate
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    CGFloat height = [UIScreen mainScreen].bounds.size.height;;
+
+    UIWindow *window2 = [[UIWindow alloc] initWithFrame:CGRectMake(width/2, 0, width/2, height)];
+    window2.backgroundColor = [UIColor redColor];
+    window2.windowLevel = UIWindowLevelStatusBar + 1;
+    window2.rootViewController = [[UIViewController alloc]init];
+    self.window2 = window2;
+    
+    [window2 makeKeyAndVisible];
+    return YES;
+}
+@end
 ```
 
 [1]:https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/WindowAndScreenGuide/WindowScreenRolesinApp/WindowScreenRolesinApp.html
