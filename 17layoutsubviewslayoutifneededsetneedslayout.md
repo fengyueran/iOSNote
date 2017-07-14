@@ -28,7 +28,7 @@
 由上可知layoutSubviews是为了布局子视图而生。
 
 **2.layoutSubviews()**
-layoutSubviews什么时候调用
+layoutSubviews什么时候调用，stackoverflow上总结的答案，一一测试，有效。
 - init 初始化不会触发 layoutSubviews
 - addSubview 会触发 layoutSubviews
 - 设置 view 的 frame 会触发 layoutSubviews，当然前提是 frame 的值设置前后发生了变化
@@ -37,13 +37,9 @@ layoutSubviews什么时候调用
 - 改变一个 UIView 大小的时候也会触发父 UIView 上的 layoutSubviews 事件
 
 
-主要是为了布局子空间，如下：当UIView被addSubview后会自动调用layoutSubviews方法
-
-
-
+如下：当UIView被addSubview后会自动调用layoutSubviews方法
 
 ```
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
