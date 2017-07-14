@@ -101,7 +101,7 @@ layoutSubviews什么时候调用，stackoverflow上总结的答案，一一测�
     [self.shopView layoutIfNeeded];
 }
 ```
-
+当屏幕旋转后调用rotate方法，通过setNeedsLayout标记待更新，layoutIfNeeded立即更新shopView。
 
 
 [1]:https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/WindowsandViews/WindowsandViews.html
