@@ -118,5 +118,10 @@ UIKIT_EXTERN const UIWindowLevel UIWindowLevelStatusBar ; // 值为1000
 }
 @end
 ```
+效果如下：
+![](/assets/pic14-2.png)
+
+可以看到通过将新window的设置为UIWindowLevelStatusBar + 1比statusBar的层级更高，从而覆盖了statusBar。
+
 
 [1]:https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/WindowAndScreenGuide/WindowScreenRolesinApp/WindowScreenRolesinApp.html
