@@ -56,7 +56,51 @@ layoutSubviews什么时候调用，stackoverflow上总结的答案，一一测�
     self.redView.backgroundColor = [UIColor redColor];
 }
 ```
+我们看到调用了[super layoutSubviews]，这是为了继续使用约束条件布局子视图而不是完全抛弃，且可以得到当前view准确的frame。
 
+能否显示调用？
+苹果官方明确指出不应直接调用layoutSubviews，如果需要强制更新视图则调用layoutIfNeeded方法强制更新setNeedsLayout方法标记的需要更新的视图。
+
+**3.setNeedsLayout**
+
+标记为需要重新布局，不立即刷新，而是等到下一个更新循环再调用layoutSubviews更新视图。由此来降低多次更新带来的开销。也可以配合layoutIfNeeded立即更新
+
+**3.layoutIfNeeded**
+如果，有需要刷新的标记，立即调用layoutSubviews进行布局
+如下：
+屏幕旋转前后的布局一般不一样，
+```
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    if (currentOrientation == UIDeviceOrientationPortrait) {
+        self.redView.backgroundColor = [UIColor redColor];
+    } else {
+        self.redView.backgroundColor = [UIColor brownColor];
+    }
+    self.redView.frame =CGRectMake(100, 100, 200, 200);
+
+}
+```
+```
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(rotate)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+    self.shopView = [[ShopView alloc]init];
+    [self.view addSubview:self.shopView];
+    
+}
+
+
+- (void)rotate {
+    [self.shopView setNeedsLayout];
+    [self.shopView layoutIfNeeded];
+}
+```
 
 
 
