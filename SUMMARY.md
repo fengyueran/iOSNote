@@ -9,7 +9,7 @@
 * [6.isa指针](6.isa.md)
 * [7.KVC的简单使用](7.kvc.md)
 * [8.KVO](8.kvo.md)
-* [9.UIViewController中的loadView、viewDidLoad、viewDidUnload](9.uiviewcontroller中的loadview、viewdidload.md)
+* [9.UIViewController Lifecycle](9.uiviewcontroller中的loadview、viewdidload.md)
 * [10.Autorelease Pool](10.autorelease-pool.md)
 * [11.循环引用](11.循环引用.md)
 * [12.Block](12.block.md)
