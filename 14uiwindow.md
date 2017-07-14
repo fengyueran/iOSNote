@@ -87,7 +87,7 @@ keyWindow=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667);
 - application.keyWindow = self.window
 
 **3.UIWindow的层级**
-UIWindow由层级(UIWindowLevel)之分，层级越高的越显示在外层。UIWindowLevel主要有三个层级
+UIWindow有层级(UIWindowLevel)之分，层级越高的越显示在外层。UIWindowLevel主要有三个层级
 ```
 UIKIT_EXTERN const UIWindowLevel UIWindowLevelNormal;
 UIKIT_EXTERN const UIWindowLevel UIWindowLevelAlert;
