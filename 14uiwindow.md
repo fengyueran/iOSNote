@@ -9,6 +9,7 @@ UIWindowUIWindow特性：
 - 每一个window是独立的
 - 同一时间只有一个window可以成为key window
 - 只有key window 才能接收键盘或非触摸类事件
+- 与UIViewController协同工作，方便完成设备方向旋转等的支持
 
 那么UIWindow是如何渲染到屏幕呢？
 - UIScreen对象识别物理屏幕连接到设备
@@ -53,7 +54,7 @@ UIWindowUIWindow特性：
 makeKeyAndVisible的作用：
 见名思义，即：
 - 将window设置为 keywindow
-- 将window移动到其他window的前面并显示
+- 显示window
 
 怎么证明呢？运行下面的代码
 ```
@@ -85,5 +86,12 @@ keyWindow=<UIWindow: 0x7f8fb7502b80; frame = (0 0; 375 667);
 - self.window.hidden = NO
 - application.keyWindow = self.window
 
+**3.UIWindow的层级**
+UIWindow由层级(UIWindowLevel)之分，层级越高的越显示在外层。UIWindowLevel主要有三个层级
+```
+UIKIT_EXTERN const UIWindowLevel UIWindowLevelNormal;
+UIKIT_EXTERN const UIWindowLevel UIWindowLevelAlert;
+UIKIT_EXTERN const UIWindowLevel UIWindowLevelStatusBar
+```
 
 [1]:https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/WindowAndScreenGuide/WindowScreenRolesinApp/WindowScreenRolesinApp.html
